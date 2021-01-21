@@ -1,0 +1,89 @@
+SETTING UP PUG TEMPLETA IN EXPRESS:
+	npm i pug
+	
+Permite renderizar website usando simples templates
+
+1. Creamos la carpeta views
+2. 
+En app.js:
+	app.set('view engine', 'pug'); // Le decimos a express que vamos a usar pug templates
+	app.set('views', path.join(__dirname, 'views')); //Siempre usar directory name variable
+
+	//1) GLOBAL MIDDLEWARES
+	//Serving statics files
+	app.use(express.static(path.join(__dirname, 'public')));
+
+3. Creamos un archivo base.pug en views folder
+
+4. En app.js:
+	app.get('/', (req, res) => {
+  	res.status(200).render('base'); //Render() renderiza el template que le pasemos
+	});
+
+
+Intro Pug: Podemos escribir HTML clasico o utilizar la sintaxis de pug
+
+Se basa en:
+	Elementos HTML 
+	Identarlos
+
+Para meter un elemento dentro de otro elemento:
+	Usamos identacion
+		doctype html
+		html
+		    head 
+		        title Natours
+		    
+		body
+		    h1 The Park Camper
+		    p Es un parrafo
+-----------------------------------
+VINCULANMOS CSS Y FAVICO
+Los atributos:
+<link rel="stylesheet" href="css/style.css">
+
+En pug los escribimos con comillas simples:
+	link(rel='stylesheet' href='css/style.css')
+
+doctype html
+html
+    head 
+        title Natours #{tour}
+        link(rel='stylesheet' href='css/style.css')
+        link(rel='shortcut icon' type='image/png' href='img/favicon.png')
+
+    body
+        h1 The Park Camper
+        p Lorem ipsum dolor sit amet.
+
+**************************************
+Los href (href='css/style.css')funcionan  gracias al middleware que dice donde buscar esos request:
+	//Serving statics files
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+**************************************
+Como pasar data a los templates:
+	En app.js:
+		//ROUTES
+	app.get('/', (req, res) => {
+	  res.status(200).render('base', {
+	    tour: 'The Forest Hiker',
+	    user: 'Fari',
+	  }); //Render() renderiza el template que le pasemos
+	});
+
+En el pug aplicamos buffer code:
+    body
+        h1= tour
+        p= user.toUpperCase() //buffer code
+        - const x = 9; //no buffer
+        h2= 2 * x
+
+* Podemos escribir Js en el template
+* Podemos escribir "ES6 Template Strings" (parecido) #{tour} interpolation syntax:
+	
+	title Natours #{tour}
+
+*Para especificar una clase usamos el dot .:
+	header.header

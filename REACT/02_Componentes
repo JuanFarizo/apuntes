@@ -1,0 +1,37 @@
+Componentes: 
+Buena practica: 
+				Nombrarlos con la primer letra en mayuscula y el mismo nombre al archivo.
+				Crear en src una carpeta llamada components y ahi guardarlos todos.
+
+Al final siempre se debe exporta el componente: export default App;
+
+
+
+Los componentes son funciones que retornan html que se va a ver en una parte de la pagina
+
+Dentro del componente importamos lo que usemos como imagenes o estilos css
+import React from 'react'           -> Este va siempre
+import logo from './logo.svg'
+import Post from './components/Post'
+import './estilo.css'
+
+Function App () {
+return (
+	<div className="App">          className-> Equivale a poner class en html 
+	Aca adentro va html escrito con JSX
+	{ } Lo que va entre llaves es fragmento js
+	<Post clave='valor'  />   -> permite llamar a otro componente el cual siempre debemos importar. Clave (el nombre del atributo) y valor es lo que se pasa 
+								al componente como propiedad el cual lo recibo en un formato de json
+	
+	);
+
+}
+export default App;
+
+Buena practica nombrar clases para el css:
+
+	Al componente se le pone el nombre de una clase generica  <div className="App">
+	y al resto se le pone el nombre de la clase seguida de guion medio con el nombre de la clase
+	
+	<header className='App-header'>
+	

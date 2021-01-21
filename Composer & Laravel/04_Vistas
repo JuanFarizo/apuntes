@@ -1,0 +1,22 @@
+----------- VISTAS ----------- 
+
+Cuando me piden una ruta , carga el HTML de esta vista.
+Route::get("/peliculas", function () {	
+	return view("listadoDePeliculas"); // cuando se ejecuta va a buscar dentro de la carpeta resources/views el nombre del archivo de php .blade.php
+});
+
+
+resources/views/listadoDePeliculas.blade.php
+
+
+
+Route::get("/pelicula/{id}", function ($id) {
+	$vac = compact ("id"); 
+	return view("detallePelicula", $vac); // Para compartir las variables de ruta con el archivo de vistas se debe especificar cuales variables se van a compartir con funcion compact y pasarla en la funcion view
+	
+});
+
+----------- RECURSOS ESTATICOS ----------- 
+Son: css, imagenes, JS, los cuales deben almacenarse en la carpeta /public
+
+Por ejemplo al referenciar la hoja de estilo lo hacemos /css/style.css, las vistas asumen que al comenzar la ruta de un recurso con / lo buscara dentro de la carpeta public

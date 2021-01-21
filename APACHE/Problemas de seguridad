@@ -1,0 +1,6 @@
+### Problemas de seguridad: 
+
+* Unicamente se esta trabajando con usuario root -> Se deberia crear otro usuario y darle los permisos pertinentes
+* Correr la PM2 desde root 
+*
+*

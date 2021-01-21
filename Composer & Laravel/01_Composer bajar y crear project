@@ -1,0 +1,29 @@
+Composer: se utiliza desde la terminal. Toma las dependecias desde un repositorio el cual es https://packagist.org/ de muchas librerias y frameworks en php
+
+Crear un proyecto:
+
+composer create-project laravel/laravel nombreDeLaCarpeta 
+
+El proyecto lo crea una persona (ejecuta el comando create-project) y el resto de los que trabajan con git dps de bajar el repositorio deben actualizar laravel con un update de composer 
+
+composer install: si la persona bajo el repositorio de GIT
+composer update: si deseamos actualizar las librerias del proyecto
+
+
+1) Creamos el project
+composer create-project laravel/laravel nombreDeLaCarpeta 
+2) Copiar el archivo .env.example y renombrar a .env
+3) Generamos la clave de encriptacion
+php artisan key:generate
+4) Levantamos Artisan
+php artisan serv
+
+
+Si descargamos el proyecto desde git:
+1) Descargamos el proyecto
+2) ejecutar composer update
+3) revisar y configurar (si es necesario)  el archivo .env
+4) ejecutar php artisan key:generate
+5) ejecutar php artisan serv
+
+

@@ -1,0 +1,19 @@
+TLP sudo apt install tlp
+
+	Para ver si esta activo: sudo systemctl status tlp
+
+
+Documentacion: 	https://www.tecmint.com/tlp-increase-and-optimize-linux-battery-life/
+
+To display Linux battery information, run:
+	sudo tlp-stat -b
+
+Si antecedemos la palabra clave watch -> va a ejecutar el comando cada 2 segundos
+
+Ej. 
+
+watch sudo tlp-stat -b
+
+
+Documentacion oficial: 
+https://linrunner.de/tlp/settings/introduction.html

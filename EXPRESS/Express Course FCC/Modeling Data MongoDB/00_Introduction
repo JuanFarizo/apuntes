@@ -1,0 +1,51 @@
+Datamodeling: Es el proceso de tomar data sin estructurar generada por el escenario del mundo real y luego estrcuturarla en un modelo de datos logico.
+
+Relaciones entre documentos. Ej Procuctos categorias, ordenes, proveedores, carrito.
+
+1. Different types of relationships between data:
+	1:1 movie->name
+
+	1:Many:
+			1:Few	1Movie->Many Awards
+			1:Many	1Movie->Hundred/Thousands Review
+			1:Ton 	1App->Millons Log
+
+	Many:Many Movie:Actor. 1 Movie have Many Actors. and 1 Actor can act en Many Movies.
+
+2. Referencing/Normalization vs Embedding/Denormalization
+	Cada vez que hay 2 tipos de datasets relacionados podemos representar esa relacion en una data reference o normalized form o en una embedded o denormalized form
+	a) Referenced/Normalized: Tenemos los dataset y documentos separados pero relacionados. Un documento para Movie y uno para cada Actor por ejemplo. En Movies tenemos un array con los id de los actores que participaron Referencing (child)
+
+	b) Embedded/Denormalized: En MongoDB podemos embeber (Desnormalizar) documentos dentro de otros documentos. Tenemos un documento con toda la main data que tiene relacionado. Lo que implica que se deben hacer querys para traer todo el documento pero no se pueden hacer para los documentos embebidos.
+
+3. Embedding o referencing other documents
+	Tenemos que elegir entre embeber o referenciar (entre normalizar o desnormalizar). Se utilizan 3 criterios para decidir:
+		a) Relationship Type: How two datasets are related to each other:
+			- Embedding: Cuando tenemos 1:Few o 1:Many
+			- Referencing: 1:Many 1:Ton Many:Many. Ya que sino se crearian documento demasiados largos si embebemos.
+
+		b) Data Acces Patterns: How often data is read and written. Read/write ratio. Elegir una u otra en funcion si la data es leida muchas veces o escrita.
+			- Embedding: Cuando en su mayoria es leida. No cambia rapidamente. Para un high read/write ratio.
+			- Referencing: Data es updateada muchas veces. Para un low read/write ratio.
+
+		c) Dta closeness: How much the data is related, how we wan to query.
+			- Embedding: Los dos datasets realmente pertenecen a si mismos. Estan tan conectados que con al consutar ese documento obtenemos los dos datos. Ej. User + Email Addresses.
+			- Referencing: Frecuentemente tenemos que hacer query a los dos dataset cada uno por separado
+
+4. Types of referencing:
+	a)Child Referencing: Tenemos la referencia del hijo dentro del documento padre, usalmente guardado en un array. El problema es que el array se puede volver demasiado largo si tiene muchos hijos. Se lo considera Anti-Pattern en MongoDB. Son una pareja muy atada se dice. 1:Few
+
+	b)Parent Referencing: En cada hijo tenemos una referencia al documento padre. Estan mas aislados los documentos y pueden ser tratados de forma mas independiente. 1:Many 1:Ton
+
+	c)Two-Way Referencing: Mantenes referencias de ambos lados. Ej. Documento Actor tienen referencia de las Movies. Y en Documento Movies estan la referencia a Actores. Many:Many
+
+	***************************
+	EN RESUMEN:
+				1. Estructurar la data de forma que coincida con la forma en que la aplicación realiza queries y actualiza la información.
+				2. Analizar los casos de uso primero, luego modelar la informaicón de forma que las request sean respondidas de la forma más eficiente.
+				3. Siempre es mejor embedding/embeber siempre y cuando no exista una buena razón para no hacerlo. Especialmente cuando las relaciones son 1:Few y 1:Many.
+				4. En caso de relaciones 1:Ton o Many:Many usualmente es mejor referenciar (reference) en vez de embeber.
+				5. Referencing también es mejor en los casos en que la información se actualiza frecuentemente o debes acceder a los datasets de forma independiente.
+				6. Usar embedding cuando la data es mas que nada leida y raramente actualizada. Y cuando los dos datasets pertenecen intrinsicamente juntos.
+				7. No permitas que los array's crezcan de forma indefinida, si necesitas normalizar usa child referencing para 1:Many, y parent referencing para 1:Ton.
+				8. Usar Two-Way referencing para relaciones Many:Many

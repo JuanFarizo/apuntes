@@ -1,0 +1,45 @@
+EXTENDING BASE TEMPLATE WITH BLOCKS
+Con extends podemos utilizar el mismo BASE layout para cada una de las paginas que queremos renderizar
+
+En app.js:
+	app.get('/overview', (req, res) => {
+	  res.status(200).render('overview', {
+	    title: 'Todos los Tours',
+	  });
+	});
+
+	app.get('/tour', (req, res) => {
+	  res.status(200).render('tour', {
+	    title: 'The Forest Hiker Tour',
+	  });
+	});
+
+
+EXTENDING: 
+	En overview.pug y en tour.pug solo ponemos el contenido para esa pagina especifica. No ponemos nada de lo que esta en la base.
+	Luego inyectamos estos contenidos en el template base (parent/padre template)
+Como funciona? Cuando overview template es renderizado se toma el template base y es llenado con el contenido de este archivo (overview.pug) 
+
+En base.pug:
+    //CONTENT
+    block content
+      h1 Este es un placeholder heading
+
+En overview.pug debemos extender nuestro template base:
+1. Extendemos la base
+2. Llenamos el block content
+
+extends base //1.
+
+block content //2.
+	h1 Este es tour overview
+
+
+INCLUDE HEADER FOOTER <--- BASE TEMPLATE ----> BLOCK CONTENT
+HIJO 						PADRE
+							HIJO				PADRE
+
+
+El include es un hijo para el template base
+
+Cuando llamamos a una vista por ejemplo overview.pug y tenemos todo el contenido + acceso a las locals (las variables del ladop servidor, variables que pasamos al template overview) se las podemos pasar al Base Template y todo nuestro contenido del overview sera puesto dentro del block que esta en el base template y en este mismo podremos tener acceso a las locals.

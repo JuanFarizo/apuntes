@@ -1,0 +1,37 @@
+SETTING UP PROJECT STRCTURE
+
+1. Creamos en la carpeta routes un archivo viewRoutes.js
+2. Montamos el viewRoutes en nuestro app.js:
+	const viewRouter = require('./routes/viewRoutes');
+	app.use('/', viewRouter);
+3. Creamos viewsController.js
+
+4. Nuevamente en viewRoutes.js:
+	const viewsController = require('./../controllers/viewsController');
+	router.get('/', viewsController.getOverview);
+
+
+Entonces viewRoutes.js quedaria:
+
+	const express = require('express');
+	const viewsController = require('./../controllers/viewsController');
+	const router = express.Router();
+
+	router.get('/', viewsController.getOverview);
+	router.get('/tour', viewsController.getTour);
+
+	module.exports = router;
+
+Y viewsController.js quedaria:
+
+	exports.getOverview = (req, res) => {
+	  res.status(200).render('overview', {
+	    title: 'Todos los Tours',
+	  });
+	};
+
+	exports.getTour = (req, res) => {
+	  res.status(200).render('tour', {
+	    title: 'The Forest Hiker Tour',
+	  });
+	};

@@ -1,0 +1,12 @@
+Para cambiar la placa de video y asi obtener menos consumo cuando le saco el AC a la notebook ejecutar la query:
+
+	sudo prime-select intel
+
+	si quiero volver a nvidia:
+	sudo prime-select nvidia
+
+Luego debo reiniciar el sistema 
+
+Para verificar el cambio en el uso de la grafica:
+	
+	prime-select query

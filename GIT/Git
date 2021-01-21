@@ -1,0 +1,53 @@
+***************GIT****************
+
+Comandos útiles:
+
+cd : para cambiar directorio
+cd .. : para subir en un directorio
+ls : lista los archivos
+ls -a : lista los archivos con atributos
+mkdir : crea una  carpeta
+rm : para borrar un archivo
+rm -r : borra carpeta y su contenido
+touch : para crear un archivo
+mv : para cambiar el nombre de un archivo
+
+Comando GIT INIT  :
+indica  que la ruta actual será nuestro REPOSITORIO
+git config
+
+git add : (seguido de la lista de archivos) permite subir archivo al staging (escenario) 
+Agrega al stage de manera temporal todos los archivos que hayamos creado en nuestro proyecto 
+git add .  : sube todos los archivos.
+
+EMPAQUETAR ARCHIVOS: Se lo conoce como hacer un commit. Se cierra una version.
+git commit  opcion -m "aca va el mensaje" : agrega de manera definitiva los archivos agregados al stage
+
+git push : sube todos los cambios y todos los commit que se realizaron al repositorio remoto.
+git push origin master : master significa que lo hacemos a la rama del repositorio que queremos enviar.
+
+git status : indica el estado de nuestros archivos.
+git rm : para remover archivos
+
+
+git remote add origin ...URL...  : Guardar nuestro repositorio en otra máquina!
+
+Para hacerlo, necesitamos primero registrar una computadora remota, a la que llamaremos origin, mediante el comando git remote add: 
+
+git clone ...URL... que creará nuestro repositorio local ya sincronizado con el repositorio remoto
+
+
+
+    1- Crear un directorio, si no existe (mkdir directorio)
+    2- Dirigirse a él (cd directorio)
+    3- En el directorio, inicializar el repositorio (git init .)
+    4- Crear archivos y agregarlos (git add archivo)
+    5- Realizar el commit inicial (git commit -m "Primera versión") 
+	
+	
+git checkout -b nombreDeLaRama   : Sirve para crear una nueva rama con todos los archivos que se encuentran en la rama en la que estoy parado
+git branch : muestra las ramas
+git checkout nombreDeLaRama : cambia a la rama esta
+
+Una vez que tengo la versión definitiva:
+git merge nombreDeLaRamaDesarrollada --no-ff

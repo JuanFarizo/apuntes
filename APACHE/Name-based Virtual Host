@@ -1,0 +1,9 @@
+### Vritual Hosting: Name-based
+
+El server depende en el cliente para indicar el hostname como parte de el HTTP headers. Esto permite que muchos host puedan compartir la misma IP address.
+
+Name-based VH -> Para implementar necesitamos configurar los DNS server para que mapee cada hostname con la correcta IP address y configurar Apache HTTP Server para que reconozca los diferentes hostname.
+
+#### Como el server selecciona el name-based virtual host correctamente
+
+Lo que primero debemos entender es 

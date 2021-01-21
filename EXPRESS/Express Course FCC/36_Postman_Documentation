@@ -1,0 +1,10 @@
+Postman Documentation
+
+Para password creaer una variable de ambiente: 
+
+	1. Vamos a la ruedita
+	2. Elegimos Dev
+	3. La agregamos
+	4. Para usarla va entre {{}}. Ej "password": "{{password}}"
+
+Podemos agregar una descripcion Debajo del nombre de la pestaña que esta activa.

@@ -1,0 +1,47 @@
+ *Flex *
+Se debe hacer que el container respete los anchos de sus hijos:
+flex-wrap: nowrap;
+/*SE DEBE USAR EL display: flex; Para que surjan efecto los cambios en el contenedor*/
+
+
+flex-direction: Define la direccion en el eje principal. (Es el horizontal o el vertical segun usemos row o column)
+				row; 
+				row-reverse;
+				column;
+				column-reverse;
+
+justify-content: Alinea los elementos flex a lo largo del eje principal. (Permite alinear contenido del eje principal)
+				flex-start;
+				flex-end;
+				center;
+				space-between; (deja espacio entre las cajas y NO TIENE en cuenta el margen con la caja contenedora)
+				space-around; (deja espacio entre las cajas y TIENE en cuenta el margen con la caja contenedora)
+
+
+align-items: Alinea los elementos flex a lo largo del eje transversal.  
+			flex-start;
+			flex-end;
+			center;
+			baseline;
+			stretch;
+			
+
+			
+			
+-PROPIEDAD A ELEMENTOS INDIVIDUALES- 
+
+
+order: valorNumerico;
+Por defecto tienen valor 0; Se pueden establecer numeros negativos y positivos para ordenar
+ 
+align-self: Acepta los mismos valor que align-items nada mas que para un solo elemento.
+			flex-start;
+			flex-end;
+			center;
+			baseline;
+			stretch;
+
+flex-wrap: acomoda las cajas al ancho del contenedor 
+norawp: se va del contenedor
+
+

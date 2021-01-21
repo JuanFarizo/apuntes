@@ -1,0 +1,31 @@
+Renderizado Condicional:
+
+1. Expresion en la vista
+
+ej. 
+	let comments
+	
+	if (this.stat.showComments) { 
+	comments = <div>Comentarios</div>
+	}
+	else {
+	comments = 'sin comentarios'
+	}
+
+
+2. Luego la mostramos en la vista
+	return (
+
+	<div>
+		<h2>{this.props.data.title}</h2>
+		<p>{this.props.data.brief}</p>
+	<a href='#' onClick={this.ShowComments}>Mostrar Comentarios</a>
+	{comments}
+	)
+	
+	
+	
+showComments = () => { //Cuando utilizamos esta forma en la funcion al aplicar this hace referencia al padre y no a la funcion en si
+	
+}
+

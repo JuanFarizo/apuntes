@@ -1,0 +1,9 @@
+------RESPOND-REQUEST CYCLE------
+
+Req.Res Obect -> //Middleware next() -> Middleware next() -> Middleware res.send() -> RESPONSE
+
+Req.Res Object atraviesa cada middleware hasta alcanzar el RESPONSE, es como una tuberia por odnde viaja el req.res.
+
+A todos los middlewares se los llama MIDDLEWARE STACK y se ejecutan segun el orden de aparicion en el codigo. Por lo que es IMPORTANTE el orden en que es definido en el codigo.
+
+En general el ultimo middleware es un route handler un res.send() -> Se encarga de mandar la data al cliente  

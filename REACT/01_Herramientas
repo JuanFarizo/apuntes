@@ -1,0 +1,35 @@
+Herramientas necesarias:
+es.reactjs.org documentacion 
+
+1) NodeJs -> entorno de ejecucion para js
+npnjs.com repositorio global de packages de javascript -> React es una de ellas.
+
+Para instalar react:
+
+2) npm i react (requiere instalar NodeJs)
+
+3) Crear una carpeta y descargar el paquete
+
+Dependiendo de si agregamos React a un sitio web que ya exista o si creamos una nueva app de react es la forma en que se instala. 
+Vemos como crear una nueva aplicacion React
+
+
+Componente: Funcion de javascript que genera HTML con datos especificos, que en un contexto haya ciertos eventos, como darle un click a un boton ejecuta una accion. Todos los componentes son .js son funciones javascript.
+
+Propiedades: Son datos que llegan al componente desde afuera
+
+
+Carpetas que utilizamos: 
+Source 
+Public 
+
+Si trabajamos remotamente y no somos los creadores del proyecto, cuando lo bajemos hay que hacer una npm install
+
+
+Como funciona basicamente:
+Del html donde esta <div id='root'> </div> va a buscar el comando en index.js donde esta el comando:
+ReactDOM.render(<App /> , document.getElementById('root'));  el cual ejecuta el App.js -> Siempre debemos importar para esto el archivo
+
+import App from '.App/';    ./ -> significa que esta en la misma carpeta que index.js           
+Este comando implica guardar en la variable App todo lo que esta en el archivo App.js
+

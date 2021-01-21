@@ -1,0 +1,20 @@
+/*Media Queries
+
+PERMITEN ORGANIZAR EL CONTENIDO DEPENDIENDO DE LAS CONDICIONES
+DE VISUALIZACION DEL CONTENIDO*/
+
+@media (min-width: 460px) and (orientation: landscape)	{       /*Dice que si hay como minimo 460px de ancho aplicamos esta regla*/
+	body {														/*Y la orientacion landscape(horizontal) portrait(vertical)*/
+			background: red;
+		}
+}
+
+/*Lo mismo si usamos max-width*/
+
+Estrategias de diseño:
+
+MOBILE FIRST PRIMERO DEFINIMOS LOS ESTILOS PARA MOBILE Y LUEGO EN LAS Queries DEFINIMOS LOS ESTILOS PARA CADA VIEWPORT
+
+MOBILE LAST DEFINIMOS EL ESTILO PARA ESCRITORIO Y LUEGO DEFINIMOS PARA CADA VIEWPORT
+
+LOS ESTANDARES LOS SACAMOS DE INTERNET 

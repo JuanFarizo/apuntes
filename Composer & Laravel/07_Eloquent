@@ -1,0 +1,75 @@
+----------- ELOQUENT ----------- 
+
+***ORM (Object-relational-mapping): El mapeo objeto-relacional es una técnica de programación para convertir datos entre el sistema de tipos utilizado en un lenguaje de programación orientado a objetos y la utilización de una base de datos relacional como motor de persistencia.)***
+Accede a la base de dato y trae la información en objetos (los definidos en el modelo).
+Relaciona cada una de las filas de la base de datos con objetos concretos de nuestra aplicación. 
+
+- Cada clase corresponde a una tabla, y cada objeto se corresponde con una fila de esta tabla.
+
+Object
+Relational
+Mapper
+
+En el archivo controllador debemos aclarar que vamos a usar el modelo:
+use App\nombreDelModelo;
+
+class PeliculasController extendes Controller {
+
+		***ALL**
+public function listado () {
+	$peliculas = nombreDelModelo::all();  //Método all() ejecuta la query SELECT * FROM TABLA
+	return view ("listado", compact('peliculas'));
+}
+}
+
+El metodo ALL devuelve un listado de objetos de tipo nombreDeLaTabla. A cada objeto puedo pedirle todas las columnas de la base de datos. Ej $peliculas[0]->id	 trae la columna id  de esa pelicula sin haber definido Getters ni Setters.
+O se los puede tratar como array asociativo $peliculas[0]["id"];
+
+______________________________________________________________________________________________________
+----------- METODOS ELOQUENT ----------- 
+
+			***FIND***
+Si en la ruta elegimos pasar un parametro como /{id}
+En controller podemos encontrar una función que busque:
+
+public function detalle ($id) {
+	$peliculas = Pelicula::find($id);   //FIND EJECUTA UN SELECT * FROM TABLA WHERE PK = $id. Devuelve un objeto de tipo pelicula. A cada objeto puedo pedirle todas las columnas de la base de datos.
+	$vac = compact('pelicula');
+	return view("detallePeliculas", $vac);  	//Pelicula es el nombre del modelo :: metodo(parametros);
+}
+
+			***WHERE***                    SE LO LLAMA QUERY BUILDER
+public function top () {
+	$peliculas = Pelicula::where("rating", ">", 5) 
+	-> orderBy ("title")
+	-> get(); // Se debe poner el metodo get (que ejecuta la query) siempre ya que antes podemos tener un -> orderBy("rating") u otros parametros que van a ir armando la query.
+	$vac = compact('pelicula');
+	return view ('listadoPeliculas', $vac);
+}
+
+			***PAGINATE***
+public function listado() {
+	$peliculas = Pelicula::paginate(5); //Paginacion de a 5 resultados por cada pagina. El ->get() se puede reemplazar por un -> paginate();
+}
+
+En el archivo de vistas (el .blade) podemos utilizar el método links
+
+@foreach ($peliculas as $pelicula) 
+
+{{$pelicula->getTitulo()}}
+
+@endforeach
+
+{{$peliculas->links()}}  // va despues del endforeach se agrega el boton de navegación 
+
+
+
+
+
+
+
+
+
+
+
+

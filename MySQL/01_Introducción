@@ -1,0 +1,20 @@
+Tablas:
+Filas: Contienen los datos/registros concretamente.
+Columnas: Representan atributos/campos de cada dato/registro.
+
+DER: Diagrama Entidad Relación. Herramienta de modelado que permite visualizar las entidades relevantes de un sistema de información, asi como sus interrelaciones y propiedades.
+Lo componen: Entidad - Atributo - Claves - Relaciones 
+- Se agrega un cuadrado por cada una de las tablas. El nombre de la tabla es un sustantivo.
+- La columnas se ponen con ovalos.
+- La clave primaria es la columna que tiene subrayado.
+
+Relaciones entre tablas: Se simboliza mediante un rombo.
+
+
+CASOS PARTICULARES
+1 a N
+- Se agrega la cardinalidad. Si la relación es 1 a N o 1 a *  (uno a muchos) se agrega en la tabla en cuestión una nueva columna ej. Generos 1 a Peliculas*, en peliculas id-genero. 
+Son llamadas claves foráneas.  
+
+N a M
+- Relación muchos a muchos N a M. Ej. Actor  N a Pelicula M. Nace una nueva table Actor-Pelicula (tabla intermedia o tabla pivot) El nombre de la tabla se ponen alfabeticamente y en singular

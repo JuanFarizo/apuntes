@@ -1,0 +1,14 @@
+----------- AUTH -----------
+php artisan make:auth
+
+Lo que hace es crearnos toda la estructura de registracion y login. Este comando hace:
+
+1) Crea los controladores necesarios -> 4  1.Registrarse 2.Forgot 3.Login 4. ResetPass
+2) Dentro de resources/view/auth  estan las vistas de registro, login, etc
+3) Crea el Modelo para modificar la BD
+
+En caso de desear un nuevo campo en la tabla deberiamos:
+- Ir a view/auth/register.blade.php  y agregar un div
+- Agregar el campo en la base de datos en la tabla de usuarios
+- Modificar RegisterController tanto la validacion como agregar el campo nuevo
+- Modificar el Modelo Usuario, los atributos que se pueden modificar en la linea protected $fillable

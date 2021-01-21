@@ -1,0 +1,8 @@
+www.useiconic.com
+
+npm install open-iconic --save
+
+
+    <link rel="stylesheet" href="node_modules/open-iconic/font/css/open-iconic-bootstrap.min.css" />
+
+Lo linkeamos

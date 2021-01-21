@@ -1,0 +1,24 @@
+Navegabilidad o mapa de sitio:
+	Presena las diferentes secciones y como se relacionan entre ellas.
+	Tienen como objetivo:
+		- Diseñadores
+		- Visitantes Humanos
+		- Visitantes Robots
+
+Tiene forma de arbol:
+	Inicia en el:
+					   HOME
+	01SECCION 		02SECCION 		03SECCION 	 
+01.01 SECC 		02.01 SECC 		03.01 SECC
+01.02 SECC 		02.02 SECC 		03.02 SECC
+
+
+Permite distribuit el trabajo entre el equipo y aseignar por secciones al grupo de personas que trabajen sobre ese asunto.
+
+Es importante realizar una breve descripción de las acciones que se ofrecen en las diferentes páginas o secciones.
+
+VISITANTES HUMANOS:
+DEBE ser intuitivo para que las personas puedan encontrar lo que buscan y explorar tu sitio aprendiendo sobre lo que se ofrece con total facilidad.
+
+VISITANTES ROBOTS:
+Version del mapa de sitio en FORMATO XML que permitirá a los motores de búsqueda, indexar nuestro sitio para uego rankearlo en las páginas de búsqueda. 

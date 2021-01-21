@@ -1,0 +1,21 @@
+Type Hinting & Return Types
+Definir los tipos de datos que puede recibir una función y los tipos de datos que va a devolver.
+
+
+Hinting: string, int, float, boolean, array, objetos* (Los objetos debe ponerse el nombre de la clase creada)
+
+public setNombre (string $nombre, string $apellido){
+$this->nombre = $nombre;
+$this->apellido = $apellido;
+}
+
+
+
+Return: int float bool string interfaces y clases array callable agregando un "?"  podriamos indicar que devuelva null			#despues del nombreFuncion () : TipoDeDato {}
+
+public getHobbies () : Array {
+return $this->hobbies;
+}
+Para que funcione return tenemos que declarar en todas las paginas de php:
+
+declare(strict_types = 1);

@@ -1,0 +1,14 @@
+Vincular Repo Local con Remoto:
+ 
+1. Creamos el directorio del proyecto
+2. Iniciamos el repo: git init
+3. git remote add origin (url de la url)
+
+Para ver la configuración:
+
+	git config -e
+
+Hacemos un 
+
+4. git pull 
+5. git pull origin master

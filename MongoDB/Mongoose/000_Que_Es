@@ -1,0 +1,14 @@
+Mongoose: es una libreria ODM (Object Data Modeling) para MongoDB y Node.js a un nivel alto de abstracción.
+
+ODM es la forma en que escribimos JavaScript para que interactue con la base de datos.
+
+Nos provee de Schemas para modelar data y relaciones, validar de manerae facil, realizar query API, middlewar,etc..
+
+A partir del Schema -->> Realizamos el Model
+
+Mongoose Model: un envoltorio para el schema, prvee de una interfaz para las operaciones CRUD de la base de datos. 
+
+-------------DOCUMENTACION--------------
+
+
+https://mongoosejs.com/

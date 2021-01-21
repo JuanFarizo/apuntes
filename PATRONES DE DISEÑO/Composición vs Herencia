@@ -1,0 +1,19 @@
+Composición vs Herencia
+
+Herencia "Es una":  
+Es el mecanismo en el cual una clase (Clase B), se crea a partir de otra (Clase A), adquiriendo (heredando) la clase B métodos y atributos de la clase A. La clase B, que adquiere métodos y atributos de otra clase (Clase A) se denomina subclase; y la clase A, que proporciona métodos y atributos a otra clase (Clase B), se le denomina superclase o clase padre.
+
+En la herencia, la subclase siempre será del mismo tipo de la superclase, por lo que se dice que mantiene una relación “Es una” (Is a), o sea la Clase B es una Clase A
+
+Composición "Tiene un": 
+Es el mecanismo en el cual una clase se construye a partir de otros objetos de igual o distinto tipo, pudiéndolos combinar para obtener la funcionalidad deseada. En la composición la nueva clase, mantiene una relación  “Usa/Tiene un” (Uses/Has a), con los objetos que son parte de la clase.
+
+
+-------------------------------
+¿Cuándo no debemos utilizar herencia?
+
+- Cuando en tu proyecto, la superclase solo es heredada por una sola subclase.
+- Cuando en las subclases tienes que reescribir métodos de la clase padre.
+- Cuando obligamos a cualquier subclases a heredar código que no necesita.
+- Cuando tienes que modificar la superclase.
+- Cuando hay muchos desarrolladores trabajando en el mismo proyecto.

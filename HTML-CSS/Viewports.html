@@ -1,0 +1,30 @@
+/*Sitio web responsivo*/
+La etiqueta META viewport da instrucciones de como debe escalar y dimensionar la pag web
+Dentro de <head>
+			<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+		</head>
+		
+Dos medidas para hacer las cajas adaptables (toman como referencia el viewport del elemento):
+
+- vh : Viewport height    ES FUNDAMENTAL
+- vw : Viewport width 	  NO SE UTILIZA TANTO (AQUI SEGUIMOS USANDO % EN EL ANCHO)
+
+LAS MEDIDAS EXPRESADAS EN % SIEMPRE ESTARÁ RELACIONADA CON LA MEDIDA DEL CONTENEDOR PADRE
+PADRE WIDTH 300PX
+HIJO WIDTH 50% => HIJO WIDTH 150PX
+
+.cajaRojaa {
+width: 25vw;    INDICA 0.25 DEL ANCHO
+height: 50vw;	INDICA 0.5 DEL ALTO
+}
+
+
+- em : medidas relativas a los contenedores (para tipografia) 
+1em es 16px a menos que se indique lo contrario. Toda medida (que no sea font-size) expresada en em's toma siempre como base de
+referencia el font-size que tenga el mismo elemento que estamos modificando.
+
+MEDIDAS RELATIVAS: medidas relacionadas con  su padre contenedor directo
+
+
+

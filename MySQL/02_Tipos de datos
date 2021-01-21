@@ -1,0 +1,30 @@
+Tipos de datos MySQL
+
+- Numericos:
+	Sin decimales:
+					Tinyint
+					Smallint
+					Mediumint
+					int
+					Bigint
+	Con decimales:
+					Float
+					Double
+					Decimal
+	Booleans: MySQL los guarda como 0 o 1 (por performance conviene usar Tinyint 0 false y 1 true).
+- Fechas:
+	Date: YYYY-MM-DD
+	Time: HH:MM:SS
+	Datetime: YYYY-MM-DD HH:MM:SS
+- Texto
+	Char(num): num va a indicar la cantidad exacta de caracteres.
+	Varchar(num): num va a indicar la cantidad máxima de caracteres.
+	Text: sin limite de caracteres.
+	
+
+Constraints: son restricciones a nivel de tablas. Se especifican via DDL. El servidor las analiza a la hora de modificar registros.
+
+- Unique Keys: solo permite valores únicos para uno (o multiples) campos.
+- Null / Notnull: Null significa que el valor para ese campo no existe o no se conoce. NO es vacio ni cero.
+- Default: Se define un valor por defecto para una columna. Se agrega a cada registro nuevo siempre que no se especifique otro valor que lo sobreescriba.
+- Auto_increment: Genera un número único y lo incrementa automaticamente en cada nuevo registro. Se suele usar para ID.	

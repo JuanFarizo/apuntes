@@ -1,0 +1,30 @@
+EN EL HTML:
+			<div id='app'>
+			{{producto}}     //{{expresiones}}
+			<img v-bind:src='imagen'>
+			</div>
+
+
+EN EL JS: Creamos una instancia de Vue
+
+			var app = new Vue({
+			el: #app,				//el Refiere a un elemento del html -> #app al nombre del div
+			data: {					//data pasa la informacion a la expresion
+			producto: 'medias',
+			imgagen: './assets/media.jpg'
+			}
+		})
+			
+			
+			
+v-bind crea un lazo entre lo que esta en data el atributo y la expresion
+atributo: v-bind:src= 'expresion'
+La forma abreviada de hacerlo es
+	:alt='descripcion'
+	:href='url'
+	:title=''
+	:class='estaActivo'
+	:style='elEstilo'
+	:disable='estaDesactivado'
+	
+	

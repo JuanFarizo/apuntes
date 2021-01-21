@@ -1,0 +1,56 @@
+//CAJAS EN LINEA: OCUPAN EL LARGO Y ANCHO DE SU CONTENIDO (IMAGENES E HIPERVINCULOS)
+NO GENERAN SALTOS DE LINEA POR DEFECTO
+<span> Caja en line </span>
+
+//CAJAS EN BLOQUE: OCUPAN 100% DEL ANCHO APRIORI Y LUEGO GENERAN UN SALTO DE LINEA
+NO DEJAN ESPACIO PARA QUE ENTRE OTRO ELEMENTO
+<div> Caja en bloque </div> 
+
+Las cajas cuentan con una propiedad de CSS: DISPLAY permite cambiar la disposición del elemento que queramos
+si la propiedad 
+display:block generan un salto de linea son los de <p><div><h1> <h2> <h3> <h4> <h5> <h6> 
+<ul> <ol> <li> <form> <header> <footer> <section> <article> puede recibir propiedades del modelo de caja
+
+display:inline     son los de <span><a><img><button><input> no recibe algunas propiedades del modelo de caja
+
+display:none hace que la caja no sea visible y desaparece para el usuario
+
+display:inline-block elemento con comportamiento de semi-bloque
+
+
+<header class="">
+Encabezado
+</header>
+
+<section class=""> //CONTENIDO MONOTEMATICO
+	<article class=""> //FRAGMENTO DE IFORMACION 
+	
+	</article>
+</section>
+
+<footer class="">
+Pie de pagina
+</footer>
+
+FLOAT	Se debe determinar el ancho de las cajas. No pueden exceder el ancho del contenedor padre (se usa anchos porcentuales)
+al flotar se saca hacia delante el contenido (no se ajustan automaticamente)
+float:  left
+		right
+		none
+		inherit
+		
+CONTENEDOR PADRE:
+porpiedad overflow: hidden
+
+FORMATO HORIZONTAL:
+1) determinar el ancho de las cajas
+2) asignar float: left
+3) asignar al padre overflow: hidden
+
+
+padding: 
+border: solid 3px green;
+width
+height
+
+box-sizing: border-box

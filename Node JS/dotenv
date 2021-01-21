@@ -1,0 +1,28 @@
+### dotenv
+*https://www.npmjs.com/package/dotenv*
+
+Instalacion:
+```
+npm install dotenv
+```
+
+#### Uso
+```
+require('dotenv').config()
+```
+Crear .env en el directorio root del proyecto. Permite agregar variables de medio ambiente especificas siguiento el formato: NAME=VALUE. 
+Por ejemplo
+```
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=s1mpl3
+```
+De esta forma process.env tiene los valores definidos en el archivo .env y podemos acceder a ellos
+Por ejemplo:
+```const db = require('db')
+db.connect({
+  host: process.env.DB_HOST,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASS
+})
+```

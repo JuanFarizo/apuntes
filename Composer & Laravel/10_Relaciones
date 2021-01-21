@@ -1,0 +1,92 @@
+----------- RELACIONES 1:N -----------
+eJ. Un Genero tiene muchas Peliculas -> Por lo que trabajamos en el MODELO!! de Generos
+
+N:1 belongsTo Episode belongsTo Season. Recibe 2 parametros:
+1)El tipo de objeto que retorna la relacion.
+2)El nombre de la clave foranea en la base de dato que relaciona ambas tablas.
+
+
+1:0..N hasMany Season hasMany Episode. Recibe 2 parametros:
+1)El tipo de objeto que retorna la relacion.
+2)El nombre de la clave foranea en la base de dato que relaciona ambas tablas. 
+
+class genero {
+
+	public $table = "genres";
+	public $guarded = [];
+	
+	public function peliculas() {
+		return $this->hasmany("App\Pelicula", "genre_id");  //metodo hasmany indica que un genero tiene muchas peliculas. A genero podemos pedirle $genero->peliculas; (devuelve un array todas las peliculas pertenencientes a ese genero)
+	}
+}
+
+@foreach ($generos as $genero)
+<li>
+	{{$genero->name}}
+	Peliculas:
+	<ul>
+	@foreach($genero->peliculas as $pelicula)
+		<li>
+		{{$pelicula->title}}
+		</li>
+	@endforeach
+	</ul>
+</li>
+
+
+class pelicula {
+	
+	public $table = "movies";
+	public $guarded = [];
+	
+	public function genero() {
+		return $this->belongsTo("App\Genero", "genre_id"); //metodo belongsTo indica que una pelicula pertenece a un genero. $pelicula->genero; (devuelve un objeto de tipo genero) el primer parametro es que cosa que deberia devolver este metodo, el segundo parametro a aclarar es la clave foranea (genre_id)
+	}
+}
+
+PARA MOSTRAR EL GENERO
+@if ($pelicula->genero)
+<p> Genero: {{$pelicula->genero->name}} </p>
+@endif
+
+----------- RELACIONES N:M -----------
+
+CUANDO LA RELACION ES DE MUCHOS A MUCHOS HAY UNA TABLA INTERMEDIA.
+EJ. ACTOR-PELICULA QUE TIENE DOS CLAVES FORANEAS (id-actor e id-pelicula)
+
+EN AMBOS MODELOS!! DEBEMOS EXPLICITAR LA RELACION
+
+
+belongsToMany Actors belongsToMany Movies. Recibe 4 parametros:
+1)Que tipo de objeto deberia devolver
+2)Nombre de la tabla intermedia
+3)Clave foranea->referencia a la clase a la que pertenece
+4)Clave foranea->referencia a la relacion que estamos tratando de definir
+
+
+class pelicula {
+	public function actores() {
+		return $this->belongsToMany("App\Actor", "actor_movie", "movie_id", "actor_id");
+	}
+}
+
+PARA MOSTRAR ACTORES POR PELICULA 
+<p>Actores:</p>
+<ul>
+@foreach($pelicula->actores as $actor)
+<li>
+{{$actor->getNombreCompleto()}}
+</li>
+@endforeach
+</ul>
+
+
+class actor {
+	public function peliculas() {
+		return $this->belongsToMany("App\Pelicula", "actor_movie", "actor_id", "movie_id");
+	}
+}
+
+
+
+

@@ -1,0 +1,21 @@
+Herencia: las clases hijas pueden utilizar los atributos y los metedos de los padres sin volver a definirlos. Si queremos un metodo diferenciado lo definimos en la clase hija para que sobrecargue el metodo de la clase padre.
+
+Ej. Tenemos la clase Mascota(hija) y la clase Animal(padre).
+include_once (animal.php);	
+class Mascota extends Animal { } 
+
+
+
+
+Clases Abstractas: no se instancian, se lo hace mediante las hijas.
+
+abstract class Animal () {}
+
+con abstract se prohibe instanciar clases de Animal.
+
+Tambien se pueden definir métodos abstractos (dentro de las clases abstractas):
+La clase hija esta obligada a definir el método. 
+Definen la firma de la función (nombre y parámetros de la misma).
+Un método abstracto funciona como un contrato, es decir, las clases hijas se veran obligadas a escribir dicho método, respetando la firma y completando el contenido de la función.
+
+public abstract function metodoAbstracto ();  #no lleva llaves la implementación va a depender de las clases hijas.

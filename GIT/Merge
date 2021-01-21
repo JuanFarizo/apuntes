@@ -1,0 +1,10 @@
+GIT MERGE 
+
+Primero nos paramos en la rama a la que le queremos unir los cambios (ejemplo master) : 
+
+Por lo que tenemos que hacer:
+git checkout master  --> de esta forma salimos del branch en el que estamos trabajando para pararnos en master.
+git merge prueba --> le mergeamos a master lo que hay en la rama de prueba
+
+
+Note: siempre que hacemos un git checkout debemos tener la rama limpia --> Implica haber hecho los commit para que cuando hagamos el checkout no perdamos nuestros cambios.

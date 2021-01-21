@@ -1,0 +1,10 @@
+Instalacion Vue: 
+Simply download and include with a script tag. Vue will be registered as a global variable.
+
+- Mediante CDN: en el body ->  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+- Npm:  npm install vue
+
+
+Vue Caracteristicas: 
+					- Es reactivo
+					-

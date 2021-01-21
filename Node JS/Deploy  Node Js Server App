@@ -1,0 +1,113 @@
+# Haciendo Deploy de Node Js server mediante SSH - PuTTy en Windows:
+Para conectarnos mediante SSH usamos una herramienta llamada PuTTy	
+### Comando Utiles SSH: 
+SSH asigna por defecto el puerto 22.
+SSH -> Permite la conexion desde un equipo windows a uno linux.
+
+SSH: Permite pasar la informacion respetando un protocolo de seguridad. Tiene que estar instalado del lado del servidor y del lado del cliente.
+PuTTy permite la conexion a un servidor de SSH ya corriendo.
+
+##### Comandos basicos:
+		- ls: muestra contenido
+		- mkdir: crea un directorio
+		- touch: crea un archivo 
+		- mv [nombre.ext] [ubicacion]: mueve el archivo a una nueva ubicacion
+		- cp [nombre.ext] [ubicacion]: copia el archivo a una nueva ubicacion
+		- rm [nombre.ext]: borrar archivo
+		- nano: es un editor de texto dentro de la consola
+		- wget [url]: permite descargar archivos de internet
+		- cat: muestra el contenido de un archivo
+		- pwd: me dice en que ubicacion estoy parado 
+
+#### Avanzado: 
+
+		- ssh-keygen: crea un certificado local en nuestra maquina para autenticarnos en nuestro servidores -> El comando crea un archivo publico (.pub) que va del lado del servidor y uno privado que es el que queda en nuestra maquina (ese nunca se pasa obvio)
+		El publico ahora lo debemos copiar en el servidor: esto lo hacemos editando el archivo .ssh/authorized_keys ejecutando el siguiente comando
+		nano .ssh/authorized_keys
+		
+
+### Una vez que nos conectamos mediante SSH: 
+Si queremos agregar la key debemos crear un directorio, un archivo cambiar su permiso a chmod 700, modificarlo con nano (es el editor de texto en consola de linux), volver a cambiar el chmod a 600 y luego guardarlo:
+```
+mkdir ~/.ssh
+chmod 700 ~/.ssh
+nano ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+```
+---------------------------------------------------------
+### Si necesito instalar Git: sudo apt-get install git
+Si hago el deploy desde  github puede que necesite crear las SSH key for Github (si no me deja en la consola deberia decir algo como "Permission denied (publickey)"):
+```
+ssh-keygen -t rsa -C "mimail@dom.com"
+```
+le das enter y enter de nuevo 
+	
+Esto lo que hace es crearnos una key en un archivo dentro de home/elusuario que usemos en un archivo id_rsa.pub, para llegar a ese archivo lo que hacemos es editarlo usando una herramienta llamda WinSCP.	
+	
+Copiamos todo lo que hay adentro del archivo .pub -> vamos a github nos dirigimos a settings -> SSH and GPG keys -> SSH keys  y la agregamos desde ssh-rsa hasta el mail.
+	
+Luego clonamos el repositorio -> entramos a la carpeta y ejecutamos el npm install.
+---------------------------------------------------------
+#### Si hacemos npm start 
+La app va a correr en el puerto 5000, entramos al ip:5000 y veremos que la aplicacion esta corriendo  remotamente .
+Pero esta no es la forma que debe correrse ya que  si se cae el servidor o se reinicia la app no vuelve a iniciar.
+Para ver el puerto de la app en general se sigue este camino ver el script start -> server.js -> ver si requiere y esta en app.js
+
+### Debemos correr la aplicacion como un proceso (in the background) -> Para lo que usamos PM2
+
+1. sudo npm install -g pm2
+1. pm2 start archivo(sea index, app o server).js  Off: server.js suele ser el archivo que inicializa este comando tiene un entry file que es el que se debe ser en general uno de esos nombres verificar en la app
+1. PM2 provee tambien un servicio de lanzar la aplicacion cuando el servidior inicia, con un comando que genera el script de forma automatica: 
+```pm2 startup``` , se genera una linea que la copiamos y pegamos en la consola.
+
+#### La App ahora esta corriendo y escuchando en la IP Privada -> Entonces lo que debemos hacer ahora es otorgarle acceso a los usuarios relacionandola con la ip publica, para lo que usamos Nginx
+- Ver apartado Config Server proxy Nginx
+---------------------------------------------------------	
+### Relacionar el ip con un dominio:
+Vamosa agregar un dominio
+#### Para que la aplicacion corra en el puerto 80 que es el predeterminado para HTTP:
+2. Debemos frenear la aplicacion - pm2 stop (sea index, app o server).js
+2. Cambiamos en el archivo el puerto a 80 editandolo desde la consola con 
+```
+sudo nano index.js
+```
+Si tira error al hacer esto puede ser que instalando un package solucionamos:
+```
+sudo apt-get install libcap2-bin
+sudo set cap_net_bind_service=+ep `redlink -f \ `wich node\``
+```		
+hacemos el - pm start (sea index, app o server).js 
+---------------------------------------------------------	
+### Integración con el servidor web
+Si ya tienes un servidor web corriendo y quieres que haga de "proxy" en el puerto 80 (http) y/o 443 (https), puedes hacer lo siguiente:
+Crea un archivo .htaccess en el DocumentRoot del servidor web (ej.: public_html) con el siguiente código, reemplazando "XXXXX" por el puerto de la aplicación node:
+```
+			DirectoryIndex ""
+			 
+			RewriteEngine On
+			RewriteCond %{REQUEST_URI} ^.*/index.*
+			RewriteRule ^(.*)$ http://127.0.0.1:XXXXX/ [P,L]
+			 
+			RewriteRule ^$ http://127.0.0.1:XXXXX/ [P,L]
+			RewriteCond %{REQUEST_FILENAME} !-f
+			RewriteCond %{REQUEST_FILENAME} !-d
+			RewriteRule ^(.*)$ http://127.0.0.1:XXXXX/$1 [P,L]
+```	
+---------------------------------------------------------
+### Tenemos listo el servidor ahora tenemos que adaptar nuestra aplicacion a production
+#### Para lo cual vamos a configurar ENV utilizando un package llamado:
+**Dotenv** https://www.npmjs.com/package/dotenv
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

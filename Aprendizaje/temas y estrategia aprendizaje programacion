@@ -1,0 +1,35 @@
+Estrategia de aprendizaje:
+
+1) Usar siempre un timer. Ej 30m de trabajo por 10m de descanso.
+2) Ordenar los temas a estudiar: Dividir teoria y practica en igual cantidad de hrs
+3) Para conocer en profundidad un tema lo mejor es desarrollar la capacidad de poder explicarlo de manera simple. Usar tecnica feymann 
+4) Intentar que no queden dudas sin contestar
+5) Separar cierta cantidad de tiempo para disfrutar
+
+Temas pendientes:
+	- JavaScript -> Que aprender: Recursion - Closure - Loops - Conditionals - Objects - Arrays (y sus manipulaciones metodos) - Scooping - Methods : .Map .Filter . Reduce (Mozzila developers esta bastante bien explicado). 
+	
+	
+	- NodeJs -> Permite hacer el back-end. Programar el servidor en Js.
+	
+	- React -> Que aprender: Package Managment - Yarn - WebPack - Babel 
+	    o
+	   Vue
+	   
+	- AJAX: Promises
+	
+	- Vanilla Js
+	
+	- ES6: (Clases - Imports/Exports - Arrow functions - Spread Operators)
+	
+	- Separation of concerns -> Components: navbar, menu, main...
+							 -> State: data or state of being (like Vue.ex)
+	
+	- Destructuring 
+	- Spread Operator: Usually state is immutable. A copy must be made.
+	
+Feymann technic:
+	Paso 1: Escribe el nombre del concepto en la parte superior de una hoja de papel / libreta.
+	Paso 2: Escribe una explicación del concepto en esta página. Usa un lenguaje plano, como si se lo estuvieras explicando a alguien (a otro estudiante, etc.). Esto debería resaltar lo que has entendido pero sobretodo te apuntará lo que no acabas de saber.
+	Paso 3: Revisa lo que no acabas de saber. Vuelve a la fuente de información, relee, y re-apréndelo. Repite el paso 2.
+	Paso 4: Si utilizas un lenguaje confuso o simplemente estas reescribiendo la fuente con otras palabras, vuélvelo a hacer y así filtras el contenido. Simplifica tu lenguaje, y donde sea posible utiliza una analogía simple.

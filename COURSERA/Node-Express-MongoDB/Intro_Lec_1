@@ -1,0 +1,81 @@
+http://callbackhell.com/
+https://www.promisejs.org/
+
+
+Lección:
+
+	¿Qué son las Web APIs? Sencillamente son API que se operan mediante el protocolo HTTP. La ventaja de operar vía web, es que el que requiera utilizar esa API, puede hacerlo desde cualquier lenguaje que utilice el protocolo HTTP.
+
+
+	 ¿Cómo funcionan? Veamos un ejemplo:
+
+	 Lo primero que se realiza es la solicitud vía HTTP a tracy.com con el verbo GET a la url api/v1/ordenes. Eso llega al servidor que tiene la IP 172.1.23.109 y entra por el puerto 80 que está vinculado a la web. Procesa el requerimiento y retorna un json.  A la url tracy.com/api/v1/ordenes se le llama endpoint.
+
+MODULOS:
+	Un módulo es un conjunto de funciones o código que puede ser importado dentro de Node. 
+
+	Exports es el objeto que se va a exportar y por lo tanto, que se va a asignar al momento de hacer un require(’/xxx’)
+
+	También podemos exportar un objeto o una función, para ello debemos exportar directamente el objeto o función al module.exports
+
+
+ASINCRONISMO:
+	En cambio, en una API asíncrona, se interpreta la instrucción, se manda a ejecutar y enseguida se pasa a la siguiente instrucción sin esperar que termine la primera.
+
+	Lo importante de una API asíncrona, es tener control y poder actuar cuando termine su ejecución. La forma común de hacerlo es mediante funciones CALLABACKS, que son funciones que se ejecutan al finalizar la tarea asíncrona
+
+
+	setTimeout(function() {    console.log('Primero');    }, 5000); console.log('Segundo'); El  código  previo  escribirá  ‘Segundo’  y  5  segundos  más  tarde,  ‘Primero’,  porque setTimeout se ejecuta de forma asíncrona.
+	 En el caso del ejemplo, la función que pasamos por parámetro a setTimeout actúa como callback. Cuando utilizas muchas funciones asíncronas que necesitan que se ejecuten en orden, debes anidar los callbacks y esto lleva a estructuras muy difíciles de interpretar3 y manejar. Hay varias buenas prácticas que usaremos para evitar este problema, en particular, trabajaremos con Promises4. 
+
+PROMESAS:
+	 Promises help you naturally handle errors, and write cleaner code by not having callback parameters, and without modifying the underlying architecture (i.e. you can implement them in pure JavaScript and use them to wrap existing asynchronous operations).
+
+	 What is a promise?
+
+	The core idea behind promises is that a promise represents the result of an asynchronous operation. A promise is in one of three different states:
+
+    pending - The initial state of a promise.
+    fulfilled - The state of a promise representing a successful operation.
+    rejected - The state of a promise representing a failed operation.
+
+	Once a promise is fulfilled or rejected, it is immutable (i.e. it can never change again)
+
+RUTAS:
+	Definimos una función (callback) manejadora de ruta para peticiones HTTP GET a la raíz del sitio ('/'). app.get('/', function(req, res) {   res.send('Hola Mundo!'); }); Hay  un  número  de  otros  métodos  de  respuesta5 para  finalizar  el  ciclo  de solicitud/respuesta
+
+
+	Métodos para definir los manejadores de rutas para el resto de los verbos HTTP: post(), put(), delete(), options(), trace(), copy(), lock(), mkcol(), move(), purge(), propfind(), proppatch(), unlock(), report(), mkactivity(), checkout(), merge(), m-search(), notify(), subscribe(), unsubscribe(), patch(), search(), y connect(). 
+
+	Usualmente es útil agrupar manejadores de rutas para una parte del sitio y accederlos usando un prefijo de ruta en común.
+
+	En Express esto se logra usando el objeto express.Router()
+
+	 https://expressjs.com/en/guide/routing.html#express-router 
+
+METODOS QUE FINALIZAN EL CICLO DE RESPUESTA:
+	https://expressjs.com/en/guide/routing.html#response-methods
+
+
+	Para usar el router en nuestro archivo app principal, necesitamos el require() del módulo de rutas admin.js y, luego, enviar el mensaje use() a la aplicación Express para agregar el Router al software intermediario (middleware) que maneja las rutas.
+
+MIDDLEWARES:
+	Las funciones de middleware normalmente realizan alguna operación al gestionar una petición o respuesta y, a continuación, llaman a la siguiente función en la pila, que puede ser otra función de middleware u otra función de enrutamiento. El orden en el que las funciones de middleware son llamadas depende del desarrollador de la aplicación.
+	El middleware puede realizar cualquier operación, hacer cambios a una petición, ejecutar código, realizar cambios a la petición o al objeto pedido, puede también finalizar  el  ciclo  de  petición-respuesta.  Si  no  finaliza  el  ciclo,  debe  llamar  a  la función next() para pasar el control de la ejecución a la siguiente función del middleware (o la petición quedaría esperando una respuesta...). 
+
+
+	Las funciones Middleware y routing son llamadas en el orden que son declaradas. Para algún middleware el orden es importante (por ejemplo, si el middleware de session depende del middleware de cookie, entonces el manejador de cookie tiene que ser llamado antes). En general, el middleware es llamado antes de configurar las rutas, si no el manejador de rutas no tendrá acceso a la funcionalidad agregada por tu middleware.
+
+
+
+	// tu middleware
+	 var middleware_function = function(req, res, next) {   
+	// ... hace algo   
+	next(); // Ejecuta next() para indicarle a Express que continue con el siguiente middleware 
+	 } 
+
+	// Configura tu middleware con use() para todas las rutas y verbos app.use(middleware_function);
+
+	 // Configura tu middleware con use() para todas la ruta una_ruta y todos los verbos app.use(‘/una_ruta’, middleware_function); 
+
+	// Configura tu middleware con use() para todas la ruta una_ruta y el verbo GET app.get(‘/', middleware_function); 

@@ -1,0 +1,40 @@
+MongoDB
+
+GUIA DE INSTALACION:
+
+https://linuxhint.com/install_mongodb_ubuntu_20_04/
+
+Comandos Utiles:
+	 sudo apt install mongodb
+	 sudo systemctl status mongodb
+	 sudo systemctl start mongodb
+	 sudo systemctl stop mongodb
+	 sudo systemctl restart mongodb
+
+	 sudo systemctl enable mongodb
+	 sudo systemctl disable mongodb
+
+
+
+Starting MongoDB shell:
+To work on the databases, you can open the “mongo shell” with the following terminal command.
+	 sudo mongo
+
+
+INSTALAR COMPASS (es la interfaz grafica para MongoDB):
+
+	https://www.mongodb.com/try/download/compass?tck=docs_compass
+
+Lo bajamos e instalamos de ahi
+
+-------------------------------------------------
+UNA VEZ QUE CREAMOS UN PROYECTO EN CLOUD ATLAS TENEMOS QUE GENERAR EL CLUSTER (Es como inicializar la base de datos)
+
+Para conectarse a la bd en Cloud Atlas:
+
+	1) Vamos al proyecto le damos en connect
+	2) Agregamos la ip address
+	3) Creamos un username y password (guardamos los datos)
+	4) Nos va a dar un link que lo tenemos que copiar en Compass y ahi nos podemos conectar
+	5) Si queremos poder conectarnos solo con usuario y contraseña sin necesidad de agregar ip -> vamos a Network Acces -> Add ip address y ahi agregamos la opcion todas las ip's
+	6) Nos conectamos mediante shell siguiendo los pasos

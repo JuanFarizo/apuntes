@@ -1,0 +1,34 @@
+Estructura de carpetas Laravel
+
+.gitignore: archivos/carpetas que se van a ignorar al sincronizar 
+
+composer.json: indica las dependencias del proyecto
+
+env.example: da parametros globales a laravel para su correcto funcionamiento. Este archivo es solo a ejemplo. Debemos crear un archivo .env con todas las especificaciones sino laravel no funciona.
+
+/vendor: librerias y frameworks necesarios para el correcto funcionamiento.
+
+/tests: pruebas automaticas para la aplicacion 
+
+/storage: permite almacenar archivos subidos por el usuario. Se guarda logs de error - Session y Cache - Uploads en gral.
+
+/routes: indica todas las paginas que va a tener el sitio web
+
+/resources: recursos asociados al front-end de la aplicacion (html, archivos de traduccion)
+
+/public: van archivos estaticos como imagenes css javaScript
+
+/database: van archivos que modifiquen informacion o estructuren la base de datos
+
+/config: configuraciones generales
+
+/boostrap
+
+/app: carpeta de aplicaciones , donde se pone toda la logica del sitio web
+
+Laravel tiene su porpio MiniWebServer. El archivo artisan. Debemos instruir a laravel que levante el webServer a traves de Artisan.
+
+Artisan: Puerta de entrada para el sitio web para desarrolladores. Desde la terminal:
+
+php artisan serv
+php artisan key:generate //Genera una clave de encripcion en el archivo .env

@@ -1,0 +1,9 @@
+/*Nueva propiedad z-index
+  Va a indicar cuales cajas quremos que esten mas adelante*/
+  
+  /*ENTRE MAS GRANDE EL NUMERO MAS ADELANTE FIGURA LA CAJA*/
+  Por defecto todas las cajas tienen z-index:0
+  
+  PARA QUE EL Z-index funcione tenemos que tener en cuenta la position: relative;
+  
+  

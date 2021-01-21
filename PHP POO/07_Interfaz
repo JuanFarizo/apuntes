@@ -1,0 +1,18 @@
+Interfaces: 
+
+interface Jugable { 
+	public function jugar($juguete); #solo definimos la firma	
+}
+	
+
+Qué definimos dentro de una interfaz: firmas de funciones a modo de contrato. Que aplicaremos a los objetos:
+
+class Mascota extends Animal implements Jugable { } 
+#La clase mascota es hija de Animal e implementa la interfaz Jugable.
+
+1) Se define la interfaz interface nombreDeLaInterfaz.
+2) Se incluye el archivo include_once("");.
+3) Se utiliza la plabara implements nombreDeLaInterfaz.
+4) Se realiza la implementación dentro de la clase con un método segun el contrato realizado en interface 
+
+Permite definir funciones polimorficas 

@@ -1,0 +1,73 @@
+----------- PATRON MVC ----------- 
+	Model - View - Controller 
+
+Separa el manejo de los datos y la lógica del negocio, de la interfaz del usuario.
+
+Entra un pedido a través de una ruta --> Se envía a un controlador --> Ese controlador interactua con la capa de modelos para obtener los datos (muchas veces condicen con la base de datos) --> Envia a la vista encargada de mostrar los datos
+
+MODEL: Sirven para explicar a Laravel como esta armada la base de datos. Debemos explicar nombre de la tabla y de la PK.
+El PDO lo configuramos desde el archivo .env
+
+VIEW: Vista.
+
+CONTROLLER: Ponemos la lógica y la preparación de los datos. Dentro de las funciones de controller ponemos las variables a compartir y utilizamos la función view("nombreDeLaVista", $vac) 
+_______________________________________________________________________________________________________
+
+
+CONTROLLER: Se crean varios archivos con varias funciones cada uno. Se suele crear un Controller por cada una de las entidades de nuestro sistema y asi agrupar por funcionalidad.
+ 
+- CREAR ARCHIVOS CONTROLLADORES: Lo creamos mediante Artisane: se crean dentro de app/http/controller
+
+php artisan make:controller nombreDelController --resource (si agregamos esta opcion al final nos crea el controlador con la muestra-alta-baja-modificaciones)
+
+El archivo nombreDelController.php va a quedar asi:
+class nombreDelController extends Controller {
+ public function nombreDeLaFuncion() {
+	$peliculas = [
+		0 => [
+		"nombre" => "Buscando a Nemo",
+		"rating" => 9
+		]
+	];
+	$vac compact("peliculas");
+	return view("listadoPeliculas", $vac);
+ }
+ public function nombreDeLaFuncion($id) { //EN CASO DE QUE LA RUTA RECIBA PARÁMETROS
+ $vac = compact("id");
+ return view("detallePelicula", $vac); //NOMBRE DE LA VISTA Y LAS VARIABLES QUE SE LE COMPARTEN
+ }
+}
+
+
+- COMO VINCULARLOS CON NUESTRAS ARCHIVO DE RUTAS:
+Dentro del archivo web.php la ruta debería quedar asi:
+Route::get("/peliculas", "nombreDelController@nombreDeLaFuncion");
+
+
+
+
+_______________________________________________________________________________________________________
+
+
+- CREAR MODELOS : los crea dentro de /app
+php artisan make:model nombreDelModelo
+
+Se deben aclarar 4 items para que el modelo se relacione con la base de datos:
+1) public $table = "nombreDeLaTabla"; 
+2) public $primaryKey = "id"; //Si la PK se llama id esta linea puede obviarse.
+3) public $timestamps = ; //Laravel asume que tenemos 2 campos create_at y update_at y los actualiza automaticamente. Si no existen debemos aclarar false. Si existen no hace falta poner este atributo.
+4) public $guarded = []; Laravel no deja que se escriba en base de datos a menos que se explicite mediante este atributo. Si deseamos que alguna columna no se pueda escribir lo especificamos entre las llaves ["sarasa"].
+Se puede reemplazar por el atributo $fillable
+5) ForeingKey en caso de que sea necesario.
+
+
+Podemos agregar metodos y atributos a gusto para utilizar los objetos.
+
+
+
+
+
+
+
+
+

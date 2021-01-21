@@ -1,0 +1,41 @@
+-----ENV VARIABLES-----
+Este tipo de variables se settean al momento en que se inicia express. No se requiere el process module porque ya que estan siempre disponibles automaticamente como variables globales.
+
+Estan fuera del alcance de express -> Por lo que se configuran en el server.js o en un archivo config.env situado fuera.
+
+Hay una convencion en Node en la que muchos packages dependen de variables especiales. Las node env.
+
+
+ENV : variables gobales que permiten establecer el ambiente de trabajo (development mode o production mode), es decir configurar variables que cambian segun el ambiente de trabajo.
+
+Cuando la App necesita configuracion basada en el enviroment de trabajo utilizamos enviromenta variables
+
+1) Creamos el archivo config.ev
+
+2) Lo vinculamos para que la app reconozca estas variables con scope global como de enviroment variables.
+	Usamos:
+		El paquete: npm i dotenv
+
+3) En el archivo server.js hacemos el require:
+	const dotenv = require('dotenv');
+
+	dotenv.config({ path: './config.env' });
+
+	Lo que hace este comando es leer el config.env y agregar todas las variables a las env variables globales.
+
+---------------------------------------------------------
+
+PARA DETERMINAR EL MODO (PRODUCTION OR DEVELOPMENT)
+
+process.env.MODE_ENV === 'development'
+
+Este comando como el del punto 3) tienen que realizarse antes del const app = require('./app') ya que sino se inicializan las variables (las de por defecto en node) antes de ser asignadas (por el config.env)
+
+----------------------------------------------------------
+CONFIGURANDO EL SCRIPT EN EL ARCHIVO package.json
+
+"scripts"  : {
+	"start:dev" : "nodemon server.js"
+	"start:prod" : "NODE_ENV = production nodemon server.js"
+}
+

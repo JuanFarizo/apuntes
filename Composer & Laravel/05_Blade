@@ -1,0 +1,99 @@
+----------- BLADE ----------- 
+Motor de plantillas integrado en Laravel. Permite crear nuestras propias plantillas para tener vistas más organizadas, ahorrar código y convertir PHP en HTML
+
+Archivos de layout = Plantillas. Escribimos el codigo de html que va a ser comun a todas las paginas: encabezado, footer, barra de navegacion, etc.
+
+@yield("nombre del hueco"): Permite establecer que el proximo contenido va a variar segun la pagina. Escribimos el HTML al desarrollar la plantilla, y donde deseamos que el contenido sea especifico de una pagina reservamos un lugar con @yield("nombre")
+
+@section("nombre del hueco"): donde este section se rellena con el codigo que tenga el mismo nombre que se paso en el parametro. Entre @section("nombre") se escribe todo el codigo html que deseamos que aparezca en la plantilla en el lugar que le dimos con @yield("nombre") @endsection
+
+@extends: Decimos con que archivo del layout queremos vincular la pagina en la que estamos trabajando. @extends("nombreDelBlade")
+
+PARA HACER UNA PLANTILLA 
+1) CREAMOS LA PLANTILLA Y EN CADA SECCION QUE QUEREMOS QUE SEA DIFERENTE. EJ EL TITULO USAMOS  @yield("nombre) PARA ESPECIFICAR QUE VA A SER DIFERENTE
+2) EN CADA PAGINA EN PARTICULAR REFERENCIAMOS A LA PLANTILLA CON @extends ("nombre de la plantilla") usamos el nombre del php que tiene la plantilla sin el blade.
+3) EN LA PAGINA EN PARTICULAR LA PARTE DE LA PLANTILLA (@yield) QUE QUEREMOS QUE SE RELLENE CON UN HTML DIFERENTE LO PONEMOS ENTRE @section("nombre que usamos en el yield") Y @endsection.
+
+Engine template: en Laravel es el Blade. Trabajamos con plantillas en html y las extendemos a traves del lenguaje de programacion.
+BLADE: Permite escribir php 
+
+COMANDOS EN BLADE:
+
+Estructuras de control: 				Directivas:
+@if @elseif @else						@section @yield
+@unless									@extends
+@for @while								@include @each
+@foreach								@push @stack
+@forelse @empty
+{{$variable}} emula un echo $variable.
+
+
+@forelse es como el foreach salvo que si no hay contenido en el arreglo se ejecuta lo que va en el @empty
+
+Ejemplos:
+
+	{{-- Comentarios en Blade --}}
+
+@if(isset($alumno))
+	Hola, {{ $alumno }}!
+	@elseif(date('w') == 4)
+		Feliz jueves!
+	@else 
+		Aprendiendo Laravel!
+		@endif
+		
+<ul>
+	@foreach(['Juan', 'Pedro', 'Maria'] as $profe)
+	<li>
+	{{ $profe }}
+	@unless($profe == 'Guido')
+	@endunless
+	</li>
+	@endforeach
+</ul>
+_______________________________________________________________
+
+	{{-- Bucles --}}
+	
+	<ol>
+		@for($i = 1; $i <= 3; $i++)
+			<li> {{ $i }} </li>
+		@endif
+	</ol>
+	
+	@while($i++ < 10)
+	 <li> Me falto {{ $i }} </li>
+	@endwhile
+	
+	@forelse ([] as $item)
+	{{-- si no hubiera items entramos aca --}}
+	@empty
+	{{-- cuando la lista esta vacia, se muestra esto (una sola vez) --}}
+	<em> La lista esta vacaia. </em>
+	@endforelse
+_______________________________________________________________	
+	
+	{{-- Extendemos una plantilla generica --}}
+	
+	@extends('layouts.default')
+	@section ('content')
+		{{-- Plantilla "padre" define secciones con YIELD --}}
+		<h1> {{ $titulo }} </h1
+		<p> {{ $resumen }} </p>
+	{{-- Podemos definir secciones y tener valores por defecto --}}
+	<input name="rating" type="number" value="{{$rating}}">
+	@endsection
+_______________________________________________________________
+
+	{{-- Nuestra plantilla default --}}
+	
+	<html>
+		<body>
+			@yield('content')
+		</body>
+	</html>
+	
+	
+	
+	
+	

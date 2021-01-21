@@ -1,0 +1,25 @@
+Ahora configuremos nuestro proyecto Node con express.
+express  generation  tool: https://expressjs.com/en/starter/generator.html
+
+Esta herramienta nos permite crear toda la estructura de un proyecto desde línea de comandos,  simplemente  ingresando  el  nombre  del  proyecto. Definirá  algunas dependencias útiles en todo proyecto express, que luego podremos modificar, si lo necesitamos.
+
+
+Lo primero que haremos es instalar la herramienta: 
+
+npm install express-generator -g
+
+Pasemos a crear nuestro primer proyecto: 
+
+express red-bicicletas --view=pug 
+
+Fíjate que definí el view engine Pug (https://github.com/pugjs/pu)
+
+Al finalizar la creación, fíjate que se encuentra el archivo package.json con varias dependencias. 
+Para instalarlas debemos ejecutar el famoso:
+
+ npm install
+
+ que toma las dependencias del archivo package.json y las descarga en el ambiente del proyecto.
+
+
+ Ahora  crearemos  el  archivo  ‘.gitignore’.  Es  importante  que  lo  escribas  todo  en minúsculas y con el punto por delante. Este nombre es una convención en el ambiente git. El archivo va a contener todas las carpetas o archivos que no nos interese que git observe para detectar cambios en los mismos y pasarlos

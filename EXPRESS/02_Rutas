@@ -1,0 +1,25 @@
+Rutas:
+		var express = require('express');
+		var router = express.Router(); Instancia de express.Router
+		
+		router.get('/', function(req, res, next) {
+			res.render('index', {title: 'unTitutlo'});
+		});
+		
+		module.exports = router;
+	
+	
+	router.get: define el metodo http al que responde al recibir una peticion del browser
+	
+	'/': este es el path, el router matchea con un path en particular usando URL, si la peticion del browser coincide con el path -> Se llama al handler
+	
+	function(req, res, next) {}: es el handler.
+	Los handlers se agrupan en los controllers
+	
+	
+	REQUEST OBJECT: representa HTTP propiedades URL parametros, queryStrings, informacion enviada en el Body, HTTP headers.
+	
+	Middleware: podes agregar o quitar o hacer cosas con el objeto (sea REQ o RES).
+	RESPONMSE OBJECT: representa HTTP respuesta, devuelve JSON date o un template (una view), redireccionar, etc.
+	
+	Podemos parsear informacion venidera con el body parse (analizar datos).

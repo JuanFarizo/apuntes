@@ -1,0 +1,11 @@
+02_Observer_Pattern
+
+Push vs poll
+
+En el poll el "observador" pregunta cada "x" cantida de tiempo si el "observado" ha cambiado.
+
+En cambio en el Push el "observado" notifica al/los "observador/es" en caso de que haya cambiado internamente. Para ello vamos a necesitar que los observadores suscriban (de alguna forma) al observado para que los pueda notificar y actualizarse automáticamente.
+
+La relación es 1 a N
+
+1 Observado a N Observadores

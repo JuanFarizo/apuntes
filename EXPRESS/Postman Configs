@@ -1,0 +1,6 @@
+--------POSTMAN CONFIG------------
+1. Agregar diferentes enviroments uno para Dev otro para Prod cambiando las URL
+2. Dividir por Ruta por ejemplo uno para Productos otra para Usuarios, etc.
+3. Agregar los token de seguridad de forma automatica en los headers necesarios:
+	- En la parte de test settear an enviroment variable
+	- En la parte de Auth desplegar menu y elegir Bearer Token y especificarlo {{jwt}}

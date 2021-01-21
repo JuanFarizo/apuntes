@@ -1,0 +1,11 @@
+Relaciones: 
+Al crear clases en archivos separados de donde las utilizamos lo que hacemos es poner el mismo nombre al archivo y a la clase. Ej. persona.php    class Persona ();
+
+Relacion de COMPOSICIÓN:
+Un atributo de una clase es un objeto. Ej. 
+
+Dentro de una clase persona tengo un atributo $mascota, y $mascota es una instancia de un objeto de la clase mascota.
+
+Se pueden concatenar operadores ->
+
+$juan->getMascota()->describirse();

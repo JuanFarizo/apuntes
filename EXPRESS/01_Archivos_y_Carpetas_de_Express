@@ -1,0 +1,21 @@
+Distribucion de las carpetas:
+
+- Public: Contiene los assets, los los archivos estaticos, como img, javascript, css
+- Routes: contiene la logica de las rutas
+- View: contiene representacion de cada pagina de html individualmente 
+
+- Bin www: contiene el script de inicializacion del web server.
+
+- package.json: contiene todos la lista de package que se necesitan para correr la aplicacion
+
+- app.js: es el punto de entrada de la aplicacion web. Es donde todo se ensable entre si.
+
+
+APP.JS:
+		- Todos los paquetes que se importaron
+		- var app = express(); metodo constructor, creae una instancia express aplication.
+		- app.set('views', path.join(__dirname, 'views')); Se elige el directorio de las vistas como ese por defecto
+		- app.set('view engine', 'pug'); se elige pug como el motor de las vistas.
+		- var indexRouter = require('./routes/index');
+		  app.use('/', indexRouter);
+		  Estas dos lineas indican que la aplicacion va a utilizar index router para el /

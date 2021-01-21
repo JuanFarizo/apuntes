@@ -1,0 +1,21 @@
+------UPDATING DOCUMENTS-------
+Siempre que ejecutamos una funcion con el One, va a operar esa funcion sobre el primer documento que encuentre segun la query que pasamos
+
+
+1° elegimos cuales documentos actualizar -> lo hacemos con una query
+2° pasamos la data
+
+
+ db.tours.updateOne({ name: "The Snow Adventurer"}, {$set: {price: 597}})
+
+Con el {$set: {}} Pasamos la data a traves de un objeto.
+
+db.tours.updateMany({price: {$gte: 597}, rating: {$gte: 4.8}}, {$set: {premium: true}})
+
+Primero paso la condicion y luego en el $set agregue un field al objeto.
+
+
+------------------------------------------------
+db.tours.replaceOne()
+
+Nuevamente se pasa la query para seleccionar un documento y luego se le pasa en un objeto todos los campos que se deben cambiar el contenido del documento.

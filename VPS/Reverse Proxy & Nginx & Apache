@@ -1,0 +1,4 @@
+### Reverse Proxy
+
+
+Internet(Browser) Peticion -> Entra la peticion a nuestra Private Network -> La peticion es manejada por el Reverse Proxy -> La peticion es dirigida a la APP para que la procese.

@@ -1,0 +1,13 @@
+Recursion:
+	1. Función que se llama a si misma
+	2. Exit condition
+
+La idea de fractal es que si vez cada una de las piezas debe verse como el todo siempre. La recursión puede ser vista como una herramienta para construir estructuras fractales
+
+Función matemática de recursión es la de factorial:
+	n! = n . (n-1)! 
+
+Recursive tree:
+	- Branch (Rama): Es algo que tiene un comienzo y un punto final, y queq se defino como teniendo 2 branches (ramas) pegadas/atadas
+
+Podemos hacerlo con la exit condition de una cantidad máxima de pixeles.

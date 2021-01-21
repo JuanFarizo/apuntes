@@ -1,0 +1,54 @@
+-----RESTFUL API------
+---API ARCHITECTURE---
+
+API: Application Programming Interface: Pieza de software que puede ser utilizada por otra pieza de software, en el orden que permitan comunicarse entre las aplicaciones.
+
+Web's API: 
+	DATABASE ====> JSON DATA =====> API =====> browser, mobil app,etc...
+
+REST: Representational States Transfer. Se trata de construir una API que sea facilmente consumible.
+
+RESTful API: son API's que siguen la arquitectura REST siguiendo ciertos principios
+
+
+
+-------------------PRINCIPIOS--------------------
+1. Separar la API en recursos logicos.
+	La abstraccion clave de la informacion en REST es un recurso. Toda la data que deseamos compartir debe estar dividida en recursos logicos.
+	Resource: objeto o representacion de algo que tiene informacion asociada a el. Cualquier informacion que pueda ser nombrada puede ser un recurso.
+
+2. Exponer los recursos, deben estar disponibles, utilizando estrcturas resource-based URL's
+	
+    [____________URL______________]
+	http://www.algo.com/NewTour
+                       [------]
+                     API Endpoint
+
+
+    Los ENDPOINT envian data al cliente o pueden realizar diferentes acciones
+
+    Los ENDPOINTs solo deben tener Resources (sustantivos) y se usan los HTTP method para las acciones
+
+3. Para mostrar, recolectar, actualizar o eliminar data la API tiene que utilizar los HTTP adecuados
+	
+	GET /tours/7   		 -> Read    
+	POST /tours    		 -> Create
+	PUT/PATCH tours/7    -> Update  PUT: actualiza el objeto entero. PATCH: actualiza solo la parte del objeto que cambio
+	DELETE tours/7		 -> Delet
+
+	El ID debe ser parte de la URL para los metodos que lo requieran.
+
+4. La informacion que mandamos al cliente o la que recibimos del cliente debe ser (en general) del tipo JSON
+
+	JSON -> RESPONSE FORMATTING -> STANDAR JSEND 
+
+	JSEND: Agrega un status message y un objeto data: en el que va a estar toda la informacion del JSON original.
+
+	Envolver la informacion en un objeto adicional se lo llama Enveloping
+
+	Otros estandares: JSON Api, ODATA Json Protocol
+
+5. No debe tener estado
+
+	Todos los estados son manejados por el cliente. Cada request debe tener la informacion necesaria para poder ser procesada. El server no debe tener que recordar request previas.
+	Del lado del servidor no tiene que manejar los estados.

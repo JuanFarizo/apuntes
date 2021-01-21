@@ -1,0 +1,8 @@
+Domain Driven Design:
+	Entidades: Entities
+
+	Las entidades son objetos del modelo que se caracterizan por tener identidad en el sistema, los atributos que contienen no son su principal característica. Representan conceptos con una identidad que se mantienen en el tiempo, y que con frecuencia también se mantienen bajo distintas representaciones de la entidad. Deben poder ser distinguidas de otros objetos aunque tengan los mismos atributos. Tienen que poder ser consideradas iguales a otros objetos aún cuando sus atributos difieren.
+
+	Value objects: Al contrario que las entidades los value objects representan conceptos que no tienen identidad. Simplemente describen características. Por lo tanto solo nos interesan sus atributos.
+
+	Los value object representan elementos del modelo que se describen por el QUÉ son, y no por QUIÉN o CUÁL son.

@@ -1,0 +1,24 @@
+Modelo Vista Controlador
+
+
+Model View Controller, MVC, es un patrón de arquitectura de software, generalmente utilizado para el desarrollo de aplicaciones web que requieren interacciones con el usuario. 
+
+MODEL: Define los objetos del modelo de negocio(--->> Actualizaciones)
+VIEW: Define las interfaces de interacción con el usuario(--->> Envia interacciones del usuario al handler en el controller)
+CONTROLLER: Define la lógica de las interacciones entre las vistas y el modelo (--->> Actualiza las vistas y --->> Envia mensajes al modelo)
+
+
+--------------------------------------------------------------
+El Modelo
+--------------------------------------------------------------
+El modelo define los objetos de tu modelo de negocio. Los objetos son representaciones de entes de la realidad. En JavaScript los representamos creando prototipos que definen estado y comportamiento. El estado de un objeto está dado por el valor de sus atributos y, el comportamiento, por los mensajes que puede responder; es decir, que tenga implementado los métodos correspondientes. En JavaScript definimos los métodos con functions. Si  el  estado  de  un  objeto  cambió,  debemos  notificarlo  a  la  vista correspondiente para que actualice el nuevo valor y, a veces, es necesario notificarlo también al controller.
+
+--------------------------------------------------------------
+La vista
+--------------------------------------------------------------
+La vista define cómo se van a mostrar los datos, o el estado, de un objeto de nuestro modelo. 
+
+--------------------------------------------------------------
+El Controller
+--------------------------------------------------------------
+El controller define la lógica de actualización de nuestro modelo y/o vista, en respuesta a la interacción de un usuario de la aplicación.

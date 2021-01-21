@@ -1,0 +1,7 @@
+# Virtual Hosting for Nginx
+* [Info Referencia](#https://webdock.io/en/docs/how-guides/how-configure-nginx-to-serve-multiple-websites-single-vps)
+* [En el caso de usar Apache ver este link](#https://webdock.io/en/docs/articles/how-configure-apache-to-serve-multiple-websites-single-vps)
+
+### Permite utilizar un solo VPS para hostear todos los dominios (Cuando tenemos apuntando dos dominios a la IP del VPS) -> Esto lo consigue haciendo Virtual Hosting
+
+1. Creamos directorios separados para cada proyecto (website)

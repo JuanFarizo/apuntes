@@ -1,0 +1,20 @@
+input:hover {						/* capos del tipo input (operador) : */
+	background-color: orange;		/*hover: cuando pasamos el mouse por arriba*/
+}
+
+input:focus {						/*focus: cuando lo clickeamos dentro de un campo*/
+	background-color: violet;
+}
+
+p:nth-child(2) {					/*el segundo parrafo de los cuatros se pinta naranja*/
+	background-color: orange;		/*solo se aplica a lo que tengamos entre parentesis*/
+}
+
+p:nth-child(odd) {					/*los parrafos impares o even para los pares*/
+	background-color: orange;
+}
+
+
+// selector(nombre del selecotr a modificar):pseudoselector {
+	propiedad: valor;
+}

@@ -1,0 +1,10 @@
+-------------DELETING DOCUMENTS----------
+Siempre que ejecutamos una funcion con el One, va a operar esa funcion sobre el primer documento que encuentre segun la query que pasamos
+
+db.tours.deletOne
+
+db.tours.deletMany({rating: {$lt: 4.8}})
+
+Si queremos eliminar todo los documentos de una coleccion:
+
+db.tours.deletMany({})

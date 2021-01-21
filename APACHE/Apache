@@ -1,0 +1,95 @@
+### Web Server - Apache
+
+#### Virtual Host
+Los Virtual Host determinan como HTTPD responde a diferentes IP addresses, Hostnames y Ports.
+Tenemos 2 Opciones
+1. [Name-based Virtual Hosts](#https://httpd.apache.org/docs/2.4/es/vhosts/name-based.html) (More than one web site per IP address)
+2. [IP-based Virtual Hosts](#https://httpd.apache.org/docs/2.4/es/vhosts/ip-based.html) (An IP address for each web site) 
+
+[Ejemplo Virtual Host examples for common setups](#https://httpd.apache.org/docs/2.4/es/vhosts/examples.html)
+
+
+[Configurar Virtual Host](#https://www.digitalocean.com/community/tutorials/como-configurar-virtual-host-de-apache-en-ubuntu-14-04-lts-es)
+
+##### Directivas de configuracion 
+
+Ejemplo de virtual Host (Name-based):
+
+Sintaxis:	**```<VirtualHost addr[:port] [addr[:port]] ...> ... </VirtualHost>```**
+
+```
+<VirtualHost 10.1.2.3>
+ServerAdmin webmaster@host.example.com
+DocumentRoot /www/docs/host.example.com
+  host.example.com
+ErrorLog logs/host.example.com-error_log
+TransferLog logs/host.example.com-access_log
+</VirtualHost>
+```
+
+**ServerAdmin** un correo del administrador del sitio que pueda recibir correos.
+
+**ServerName**  Establece la base del dominio que debe concidir para este VH. Este sera tu dominio.
+
+**ServerAlias**  determina nombres futuros que pueden coincidir y servirse como el nombre base o dominio principal
+
+**DocumentRoot** ubicación del directorio raíz para el dominio
+
+
+Una vez que configuramos el VH:
+```
+Habilita los nuevos Archivos Virtual Host
+Ahora que hemos creado nuestros archivos virtual hosts, debemos habilitarlos. Apache incluye herramientas que nos permiten hacer esto.
+
+Podemos usar la herramienta a2ensite para habilitar cada uno de nuestros sitios haciendo esto:
+
+sudo a2ensite ejemplo.com.conf
+sudo a2ensite pruebas.com.conf
+Cuando hayas concluido, deberás reiniciar Apache para asegurarte de que tus cambios surtan efecto:
+
+sudo service apache2 restart
+```
+
+addr puede ser:
+* The IP address of the virtual host;
+* A fully qualified domain name for the IP address of the virtual host (not recommended);
+* The character *, which is used only in combination with NameVirtualHost * to match all IP addresses; or
+* The string _default_, which is used only with IP virtual hosting to catch unmatched IP addresses.
+
+Cada Virtual Host debe corresponder a una direccion de IP diferente, o diferente numero de puerto o a diferente nombre de host server, en cuyo caso la maquina servidora debe estar configurada para aceptar paquetes IP de multiples direcciones.
+
+Puerto: Si no se especifica un **:port** el predeterminado es el mismo puerto mas reciente del statment Listen del servidor principal
+
+ServerName: Deberia estar especificado dentro de <VirtualHost>, sino hereda el de la configuracion principal del servidor.
+Si  no se encuentra un virtual host coincidente, entoces el primero de la lista de virtual  que concida con la direccion de ip sera utilizado. El primero de la lista de virtual host es por defecto el virtual host.
+
+For example, if the name of the machine hosting the web server is simple.example.com, but the machine also has the DNS alias www.example.com and you wish the web server to be so identified, the following directive should be used:
+```
+ServerName www.example.com:80
+```
+
+**Directiva ServerName** 
+
+Establece el esquema de relacion, hostname y port que el servidor utiliza para identificarse a si mismo. Es usado cuando creamos redireccionamiento URLs.
+Tambien es utilizado (en conjunto con ServerAlias) para identificar univocamente al virtual host cuando utilizamos name-based virtual host (es el que vemos mas adelante)
+
+**Directiva Listen**
+
+Listen manda a Apache HTTPD a escuchar una determinada IP addresses o ports; por defecto responde a las peticiones de todas las IP addresses. Solo le dice el server principal a cual addresses y puertos escuchar. 
+For example, to make the server accept connections on both port 80 and port 8000, use:
+```
+Listen 80
+Listen 8000
+```
+To make the server accept connections on two specified interfaces and port numbers, use
+```
+Listen 192.170.2.1:80
+Listen 192.170.2.5:8000
+```
+El *Virtual Host* puede ser utilizado para especificar un comportamiento diferente par una o mas addresses o ports. 
+Si el Virtual Host esta seteado para una address y port que el server no esta escuchando -> Entonces no puede ser accedido.
+
+---
+
+#### Name-based Virtual Host Support
+IP-based virtual hosts usa la IP address de la conexion

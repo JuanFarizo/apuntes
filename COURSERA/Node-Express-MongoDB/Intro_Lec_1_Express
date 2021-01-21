@@ -1,0 +1,31 @@
+Express:
+
+	npm install express -g 
+
+	npm install express
+
+	
+	Algunas de sus funcionalidades principales son: 
+
+	•Escribir métodos  de  gestión  de  peticiones  con  diferentes  verbos  HTTP  en diferentes rutas URL. 
+
+	•Integrar con motores  de renderización de "vistas"  para generar  respuestas mediante la introducción de datos en páginas html. 
+
+	•Establecer ajustes de aplicaciones web como qué puerto usar para conectar y la localización de las páginas html que se utilizan para renderizar la respuesta. 
+
+	•Añadir procesamiento de peticiones "middleware" adicional en cualquier punto dentro del proceso de manejo de la petición. 
+
+Página de middlewares para express():
+	https://expressjs.com/es/resources/middleware.html
+
+
+
+APP
+	En la variable app creamos la aplicación servidor que posee métodos para enrutamiento de las peticiones HTTP, configuración del 'middleware', y visualización de las vistas de HTML, uso de motores de 'templates' y gestión de las configuraciones de las aplicaciones3  que controlan la aplicación. 
+
+
+
+
+		app.get('/', function(req, res) {   res.send('Hola Mundo!'); });
+
+	El método get en app (app.get) define una ruta que se especifica en el primer parámetro, en este caso ‘/’, usualmente denominada como ruta raíz, que puede accederse mediante el verbo GET del protocolo HTTP. El otro parámetro es un callback, una función que se ejecuta dentro del método, y conoce la petición en sí vía el parámetro req y la respuesta a resolver vía el parámetro res. 

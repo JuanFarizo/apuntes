@@ -1,0 +1,42 @@
+Modulo: Archivo de Js que para poder ser utilizado por otro archivo de js debemos exportarlo
+
+Modulo.js:
+			var counter = function () {
+				return algo;
+			}
+			module.export = counter:
+			
+OtroArchivo.js:
+			var modulo = require('./Modulo'); -> crea un objeto del tipo module.export
+			console.log(modulo([parametros]));
+			
+---------------------------------------------------------			
+			
+VariosModulo.js:
+			var counter = function () {
+				return algo;
+			}
+			var adder = function (a,b) {
+				return `la suma es ${a+b}`;
+			}
+			var pi = 3.142;
+			module.export.counter = counter; (= nombreDeLaFuncion)
+			module.export.adder = adder;
+			module.export.pi = pi;
+			
+			O
+			
+			module.export = {
+			counter: counter,
+			adder: adder,
+			pi:pi
+			}
+			
+			O 
+			
+			module.export.function....etc
+			
+OtroArchivo.js:
+			var VariosModulo = require('./VariosModulo'); -> crea un objeto del tipo module.export
+			console.log(VariosModulo.counter([parametros])); -> con elnombre.metodo accedemos a la funcion
+		

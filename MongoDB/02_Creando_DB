@@ -1,0 +1,29 @@
+Mongo Shell:
+	
+	- use: sirve para cambiar entre db, si no esta creada la db en vez de cambiar la crea y despues cambia a esa db.
+
+	- db: muestra la bd actual en uso
+	
+	- db.collectioName.insertManyFunction()	
+	Primero elegimos la db con el comando db. Luego el nombre de la coleccion en donde vamos crear los documents
+	
+	db.tours.insertMany([{}])  //PARA ACEPTA UN ARRAY  MULTIPLES (OBJECTS) DOCUMENTOS
+	
+	Podemos pasar un JavaScript Object dentro de la funcion insert y convierte el JSON en BSON.
+	Podemos inclusive tener diferentes fields para diferentes documents.
+	db.tours.insertMany([{name: "The Sea Explorer", price: 497, rating: 4.8}, {name: "The Snow Adventurer", price: 997, rating: 4.9, difficulty: "easy"}])
+
+	Ejemplo:
+
+	db.tours.insertOne({name: "The Forest Hiker", price: 297, rating: 4.7}) //ONE PARA UN SOLO DOCUMENTO
+
+	Podriamos usar comillas para los key, pero no es obligatorio.
+
+	- db.tours.find() 
+
+	- show dbs: muestra todas las dbs
+
+	- show collections: muestra las colecciones
+
+
+

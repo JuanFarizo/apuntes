@@ -1,0 +1,73 @@
+Barra de navegación:
+	A considerar:
+		- Incluir el logo del sitio
+		- El click en el logo debe dirigir a la página principal
+		- Nombres de las secciones explicitos y en lenguaje del visitante
+		- Mostrar pocas secciones
+		- Nombres cortos
+		- Indicar con color de contraste la sección en la que se encuentra el usuario
+		- Si se incluye login o logout ubicarlo en la barra de navegación
+
+Utilizar BREADCRUMBS unicamente si tenemos más de 2 subsecciones sino no le aporta nada.
+
+BREADCRUMBS 3 tipos de usos:
+	1. Basados en la jerarquía o ubicación
+	2. Basados en atributos, se pasa de lo más abstracto a lo más particular. Ej Libros -> clasicos -> cs ficción 
+	3. Basados en pasos de un proceso: Se indican los pasos que realizo el usuario hasta llegar al punto en donde está. Ej Elige tu producto -> confirma tus datos de pago -> indica domicilio de entrega.
+
+
+
+
+
+<!-- NAVBAR -->
+ <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+      <a href="" class="navbar-brand">Navbar</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active"><a href="" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="" class="nav-link">Nosotros</a></li>
+          <li class="nav-item"><a href="" class="nav-link">Precio</a></li>
+          <li class="nav-item"><a href="" class="nav-link">Términos</a></li>
+          <li class="nav-item"><a href="" class="nav-link">Contacto</a></li>
+        </ul>
+      </div>
+    </nav>
+
+navbar-expand-sm: nos va a decir cuando se va a convertir en hamburguesa en sm seria cuando es muy chico el ancho, md medium y lg large
+
+el <a> que esta debajo lo que hace es donde deberia estar la marca sea logo o  texto.
+
+en el <span> agregamos el toggler navbar-toggler-icon que nos da la hamburguesa cdo colapsa
+
+
+ <!-- BREADCRUMBS -->
+    <div class="container">
+      <nav class="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item" aria-current="page">Home</li>
+        </ol>
+      </nav>
+    </div>
+
+
+  EN OTRA SECCION POR EJEMPLO NOSOTROS AGREGAMOS OTRO LI CON LA CLASE active
+
+
+   <!-- BREADCRUMBS -->
+    <div class="container">
+      <nav class="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Nosotros</li>
+        </ol>
+      </nav>
+    </div>
+

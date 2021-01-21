@@ -1,0 +1,43 @@
+--------Security BP--------
+
+- Compromised Database: Cuando un atacante tiene acceso a la BD.
+	Recomendaciones:
+		Encriptar password with salt and hash (bcrypt).
+		Encriptar password reset token (SHA 256).
+
+- Brute Force Attacks: El atacante intenta adivinar el password.
+	Recomendaciones:
+		Usar bcrypt (hacae el login request slow).
+		Implementar rate limiting (express-rate-limit). Limita la cantidad de request provenientes de una sola IP.
+		Implementar maximo de intentos de login.
+
+- XXS Attack (Cross-Site Scripting): El atacante intenta inyectar scripts en nuestro pagina para correr su codigo malicioso.
+	Recomendaciones:
+		Store JWT in HTTPOnly cookies. El browser solo puede enviar y recibir cookie pero no puede acceder o modificarla de ninguna forma.
+		Sanitize user input data.
+		Set special HTTP headers (helmet package)
+
+- DOS Attack (Denial of Service): Cuanado el atacante manda tantas request al server que lo termina bajando y la aplicacion esta inactiva.
+	Recomendaciones:
+		Implementar rate limiting.
+		Limit body payload (in body-parser). Limitar la cantidad de data enviada en un body en un post o patch request.
+		Avoid evil regular expressions. Son expresiones regulares que tomana un tiempo exponencial para inputs no encontrados, y pueden ser explotadas para bajar la aplicacion.
+
+- NoSQL Query Injection: Cuando el atacante en vez de poner input data, inyecta una query en orden de crear query expressions que se van a traducir a verdadera. Ej loguearse sin utilizar un usuario valido o password.
+	Recomendaciones
+		Usar mongoose for MongoDB (because of  Schema Types).
+		Sanitize user input data
+
+*************************************************
+1. Siempre en producción usar HTTPS
+2. Create random password reset tokens with expiry dates
+3. Denegar acceso con JWT luego de cambio de password. Revocar el token apenas hay un cambio de password.
+4. NUNCA ENVIAR EL CONFIG DATA TO GIT!!!!!
+5. No enviar error details to clients
+6. Prevenir Cross-Site Request Forgery usando csurf package. Es un ataque que fuerza al usuario a ejecutar acciones no deseada en una web application en la que esta logueado.
+7. Requerir re-authentication antes de realizar una accion de alto valor
+8. Implementar a blacklist of untrusted JWT
+9. Confirm user email address after first creating account
+10. Keep user logged in with refresh tokens
+11. Implementar two-factor athentication
+12. Prevent parameter pollutin causin Uncaught Exceptions. Ej. Querer meter dos filter parameter en una query que busca todos los tours. Como la app no lo soporta hara crashear la aplicacion y los atacantes podrían sacar una ventaja de esto.

@@ -1,0 +1,73 @@
+Protocolo HTTP 
+HTTP (Hypertext Transfer Protocol) o (en español protocolo de transferencia de hipertexto) es el protocolo usado               
+para la transacción de hipertexto osea paginas Web.
+HTTP es un protocolo sin estado, es decir, que no guarda ninguna información sobre conexiones anteriores. El                
+desarrollo de aplicaciones web necesita frecuentemente mantener un estado. Para esto se usan las cookies, que es                
+información que un servidor puede almacenar en el sistema cliente.
+
+La mayoría de las técnicas básicas para pasar datos (variables) entre las páginas Web, utilizan los Métodos GET y POST en HTTP. 
+
+
+Recomendaciones 
+GET y POST son verbos del protocolo HTTP, lo ideal sería utilizar GET cuando el pedido se focaliza en obtener                   
+información y POST cuando implica una acción en el servidor (login, edición, inserción, eliminación). 
+La particularidad de GET de exponer las variables en la URL lo hacen ideal para poder compartir un link que incluya variables, o guardar en los favoritos, cosa imposible de realizar con POST.
+Debemos evitar las fórmulas del tipo “entonces me conviene utilizar siempre…”, ya que como vemos, es una cuestión de contexto. 
+
+
+PROTOCOLO - MENSAJE 
+*REQUEST*
+FORMATO PARTES:
+1) VERBO + RECURSO QUE PEDIMOS + VERSION DEL PROTOCOLO DE HTTP UTILIZADO
+2) ENCABEZADO DEL PEDIDO HTTP
+3) CULMINA CON UN ENTER
+
+PROTOCOLO RESPUESTA
+*RESPONSE*
+PARTES:
+1) CODIGO DE ESTADO (SI LA RESPUESTA ES EXITOSA O NO)
+2) ENCABEZADO DE RESPUESTA DE HTTP
+3) ENTER
+4) CONTENIDO HTML ES LA RESPUESTA
+
+FAMILIAS DE CODIGO:
+- 100 --> Procesando
+- 200 --> Todo salio bien
+- 300 --> Redirección la pag ya no se encuentra donde estaba
+- 400 --> Error de parte del usuario. Ej. 404 - NOT FOUND
+- 500 --> Problema en el servidor
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+
+Pedidos mas comunes:
+$_GET : Consulta de información. No modifican la información que hay en el servidor. El query string se incluye en la url conteniendo los datos a enviar.
+- Los pedidos pueden ser cacheados
+- Aparecen en el historial
+- Pueden ser agregados a marcadores
+- Tienen restriccion de longitud
+- Solamente deberian ser utilizados para obtener información.
+
+$_POST : Envían información nueva. Modifican la información que hay en el servidor. El query viaja en el cuerpo del mensaje de HTTP y no esta visible en el url.
+- Los pedidos no pueden ser cacheados
+- No aparecen en el historial
+- No pueden ser agregados a marcadores
+- Sin restriccion de longitud
+
+OTROS METODOS MENOS CONOCIDOS:
+OPTION 		GET
+HEAD 		POST
+PUT 		DELETE
+TRACE		CONNECT
+
+URI : Identificador de Recursos Uniforme{
+URL : indica donde se encuentra el recurso (puede variar) siempre comienza con un protocolo.
+URN : Nombre de recurso uniforme. No indica exactamente donde se encuentra
+}
+
+PARTES URI:
+1) Schema
+2) Dominio o direccion IP
+3) Numeroe de puerto
+4) Nombre de recurso
+5) Cadena de consulta
+6) Identificador de fragmento

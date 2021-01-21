@@ -1,0 +1,48 @@
+----------- STORAGE -----------
+
+SUBIDA DE FOTOS/DOCUMENTOS : LARAVEL LO GUARDA CON UN NOMBRE UNICO(NO DEBEMOS PERDER LA REFERENCIA) -> DEBEMOS CREAR EN LA BD UNA COLUMNA ADICIONAL LLAMADA POSTER
+
+GUARDA LAS FOTOS EN LA /storage
+PERMITE ACCEDER (DESDE EL FRONTEND) A LOS ARCHIVOS QUE ESTAN LA CARPETA /public
+
+1) ADAPTAR EL FORMULARIO -> AGREGAR POSTER 
+2) ALMACENAR POSTER EN LA BD (PARA LO CUAL SE AGREGA UNA COLUMNA)
+3) PARA LEER LA FOTO -> usamos el comando : php artisan storage:link (permite unir las dos carpetas storage y public)
+
+
+agregar al formulario :
+
+enctype="multipart/form-data"
+
+<lable for=""> POSTER:</lable>
+<input type="file" name="poster" value="">
+
+
+
+en PeliculasController se agrega una validacion:
+
+$reglas = [
+.
+.
+.
+"poster" => "file" // ver validacion de archivos en documentacion\
+];
+
+UNA VEZ QUE PASA LA VALIDACION
+
+$ruta = $req->file("poster")->store("public");   //en store va el nombre de la carpeta en la que la guardamos. Devuelve la ruta entera donde se va a guardar el archivo incluyendo el nombre final. file("nombre del campo en el formulario")
+
+$nombreArchivo = basename($ruta); //funcion de php que nos devuelve el nombre del archivo
+
+$peliculaNueva->poster = $nombreArchivo;
+
+
+PARA MOSTRAR EL ARCHIVO 
+ ** DEBO EJECUTAR EL COMANDO php artisan storage:link
+ 
+ <div class="">
+ <img src="/storage/{{$pelicula->poster}}" alt="">
+ </div>
+ 
+ 
+ 

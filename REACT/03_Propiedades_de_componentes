@@ -1,0 +1,7 @@
+Propiedades de un componente: Son datos que vienen de afuera y que pasan a un componente.
+
+App (propos) { -> por convencion al parametro que se le pasa en la funcion se lo llama propos
+	return (
+	
+	);
+}

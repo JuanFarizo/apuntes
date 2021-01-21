@@ -1,0 +1,47 @@
+Teoria GIT:
+
+Flujo de trabajo en GIT:
+Lo primero que hacemos es configurar nuestro repositorio de GIT en nuestro directorio de proyecto.
+
+Cada archivo puede estar en 3 estados:
+	1. Modified: se han realizado cambios en el archivo. 
+
+	2. Staged: el archivo va a pasar a formar parte de una nueva versión. Esto significa que podemos tener archivos que estén modificados, pero que no queramos que formen parte de la siguiente versión. Para distinguirlos dentro de los archivos modificados, lo que hacemos es pasarlos al estado de “staged”.  
+
+	3.Committed: el archivo se encuentra en el repositorio local de GIT. 
+
+
+Estos 3 estados de archivos nos dan lugar a hablar de 3 áreas: 
+	1. Espacio de trabajo o working directory: hace referencia al directorio raíz del proyecto que estará relacionado con el repositorio de GIT.  GIT va a monitorear todos los cambios que se encuentren dentro del espacio de trabajo.
+
+	2. Staging: es el conjunto de archivos modificados y seleccionados para una próxima versión o commit. 
+
+	3. Repositorio: son todos los archivos ya versionados y contiene todo el historial de cambios.
+
+
+Para pasar al repositorio un archivo, primero debe modificarse, luego pasarse a Staging y finalmente, realizar un commit que pase todos los archivos que están en Staging al repositorio. De esta manera GIT guarda cada commit asociando su autor, la fecha y hora, un código autogenerado que identifica unívocamente al commit y, finalmente, los archivos en cuestión. 
+
+
+
+Creando nuestro primer repositorio:
+
+	El repositorio que creemos con nuestra cuenta de Bitbucket va a estar inicialmente vacío. Este repositorio de Bitbucket va a ser el repositorio central para nuestros archivos, lo que significa que otros usuarios van a poder acceder si les damos el permiso. Después de crear el repositorio, vamos a copiar la versión de nuestro repositorio local al de Bitbucket.
+
+Hacer una copia local de nuestro repositorio:
+	
+	Ahora tenemos que copiarlo a nuestro sistema local. Para hacer esto queremos copiar nuestro repositorio de Bitbucket en nuestro sistema. 
+	El término que GIT usa para copiar un repositorio es “clonarlo”. Cuando clonamos un repositorio, creamos una conexión entre el servidor de Bitbucket (conocido por GIT como “origin”) y nuestro sistema local. 
+
+	Para hacer una copia local de nuestro repositorio vamos a seguir los siguientes pasos: 1.Tocar el ícono “+” en la barra lateral y seleccionar “Clone this repository”.
+
+Agregar archivos a nuestro repositorio:
+
+	Ahora que tenemos el repositorio en nuestro sistema local, podemos empezar a agregarle archivos.
+	El comando git status nos dice cómo          está nuestro repositorio local en relación a nuestro repositorio remoto. 
+	nuestro nuevo archivo nos aparece como “untracked”. Esto es porque GIT no encuentra ninguna referencia a este archivo en versiones anteriores. 
+	Le vamos a indicar a GIT que empieza a trackear (rastrear) el archivo. Para esto, vamos a usar el comando "git add". Si lo usamos correctamente, el comando no mostrará ningún mensaje. El comando git add mueve los cambios de nuestro “Working directory” a nuestra “Staging Area”.
+	Para committear el archivo, ejecutamos el comando git commit con un mensaje de commit. La opción ‘-m’ indica que un mensaje de commit le sigue. 
+	El comando git commit toma todos los archivos del área de staging y los committea a la historia del proyecto.  
+
+	Para enviarlos a nuestro repositorio remoto, usaremos el comando git pushorigin master.
+	Este comando especifica que se envíen los cambios al branch ‘master’ (el branch en Bitbucket) en ‘origin’ (el repositorio en Bitbucket). Todo lo referido a branches puedes verlo en la documentación de Git.

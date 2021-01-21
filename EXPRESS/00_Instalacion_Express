@@ -1,0 +1,39 @@
+Basic Server: 
+	const express = require('express');
+	const app = express();
+	
+	//Create your endpoint / routes handlers
+	app.get('/', function (req, res) {
+		res.send('Hola Mundo');
+	});
+	
+	//Listen on a port
+	app.listen(5000);
+
+
+Instalacion:
+	https://expressjs.com/en/starter/installing.html -> Instalar Express
+	https://expressjs.com/en/starter/generator.html -> Crear arbol de directorio
+
+Postman: 
+		Permite hacer request a nuestro server (aunque este en local host)
+		https://www.getpostman.com
+		
+		
+NODEMON(es como el artisan serv):
+		Para que los cambios que hagamos en los archivos fuentes se carguen en el server al estar haciendo developing
+		
+		npm install nodemon --save-dev
+			Luego tenemos que ir a app.js y cambiar el script de start para que use nodemon
+			"start": "if [[$NODE_ENV == 'production' ]]; then node ./bin/www; else nodemon ./bin/www; fi"
+			
+			
+			
+### Generador de aplicacions Express
+
+```npm install express-generator -g```
+
+
+```express --view=pug myapp```
+
+el código siguiente crea una aplicación Express denominada myapp. La aplicación será creada en una carpeta llamada myapp en el directorio de trabajo actual y el motor de vistas será asignado a Pug:

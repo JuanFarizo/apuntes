@@ -1,0 +1,18 @@
+position:             /*define de que forma se va a desplazar la caja se aplica a DEFASAJES Y SUPERPOSICIONES*/
+		relative		/*la caja se defasa relativamente desde lugar original no cambian la posicion de las otras  el lugar que ocupaba la caja seguira ocupado*/
+		absolute		/*la caja deja de ocupar su lugar original y se posiciona absolutamente respecto el body*/
+		fixed 			/*siempre la deja fija en la posicion que la determinamos aunque hagamos scroll*/
+		
+		
+Combinacion de position:absolute  +  CONTENEDOR con position:relative /*El contenedor se posiciona de forma absoluta
+ respecto de su contenedor padre*/
+
+
+- RELATIVE: SE USA CUANDO QUEREMOS DESPLAZAR UN ELEMENTO SIN CAMBIAR EL FLUJO ORIGINAL
+- ABSOLUTE: DESDE SU POSICION ORIGINAL A LA NUEVA CON PUNTOS DE REFERENCIA DEL BODY(AUNQUE LA CAJA ESTE DENTRO DE OTRA), 
+			EL ESPACIO QUE OCUPABA ANTES QUEDA LIBRE
+
+- RELATIVE + ABSOLUTE: SI QUEREMOS CAMBIAR EL PUNTO DE REFERENCIA PARA POSICIONAMIENTO (RELATIVAMENTE A SU PADRE).
+
+- FIXED: POSICIONAMIENTO FIJO PERMITE TRASLADAR UN ELEMENTO DESDE SU POSICION ORIGINAL A UNA NUEVA TOMANDO COMO REFERENCIA
+		 LA VENTANA DEL NAVEGADOR. SE USA PARA QUE UN ELEMENTO SIGA AL USUARIO CUANDO NAVEGA.

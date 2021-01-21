@@ -1,0 +1,27 @@
+------MVC EN EXPRESS--------
+
+
+MODEL (BUSINESS LOGIC) ==>> VIEW (PRESENTATION LOGIC) ==>> CONTROLLER (APPLICATION LOGIC).
+
+CONTROLLERS: Handdle aplication's request, interact with models and sen back resposes to the client.
+ 
+
+MVC en el contexto de una app:
+
+Request => Router (Su funcion es direccionar la peticion a la funcion handler) => Controller <=> Model/View (Segun la request puede necesitar interacturar con el Model) => Response 
+
+BUSINESS LOGIC: Code that actually solves the business problem we set out to solve.
+Directly related to business rules, how the business works, and business needs.
+Eg.:
+	Validationg user input data
+	Ensuring only users who bought a tour can review it
+
+APPLICATION LOGIC: Code that is only concerned about the application's implementations, not the underlying business problem.
+Concerned about managing requests and responses.
+About the app's technical aspects.
+Bridge between model and view layers.
+
+
+
+Filosofia :
+			FAT MODELS / THIN CONTROLLER: Offload as much logic as possible into the models, and keep the controllers as simple and lean as possible.

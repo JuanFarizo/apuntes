@@ -1,0 +1,156 @@
+**********************************************************
+INTRODUCCIÓN
+**********************************************************
+Su potencial se basa en flexbox:
+	Determinar el esquema de disposición de los elementos
+	Gestionar el espacio
+	Ubicar los elementos utilizando un sistema de única dimensión
+
+Al usar flexbox pensamos:
+	1. En el eje principal
+	2. Uno perpendicular al principal
+
+flex-direction: row -> horizontal principal de izq a derecha
+
+flex-direction: column -> vertical principal de arriba a abajo
+
+flex-direction: row-reverse -> horizontal principal de derecha a izq
+ 
+flex-direction: column-reverse -> vertical principal de abajo a arriba
+
+LA UBICACIÓN DE LOS CONTENIDOS Y DE LOS ESPACIOS SE HACE EN BASE A AMBOS EJES
+
+
+CONTAINER:
+	Una area del documento que utilice flexbox se llama flex container. Para crear un container utilizamos la propiedad:
+Flex container:
+
+	display: flex
+	display: inline-flex
+
+
+Como se ve?
+	flex-direction: row
+
+Los items se alinean de izquierda a derecha y desde arriba, dependiendo el eje principal. 
+Los items no se agrandan a lo largo del eje principal pero podrian achicarse.
+Los items tienden a llenar toda la longitud del eje perpendicular.
+La propiedad flexbasis es auto
+La propiedad flexwrap es nowrap
+
+
+**********************************************************
+SISTEMA DE GRILLAS DE BOOTSTRAP
+**********************************************************
+  <div class="container"> 
+      <div class="row">
+        <div class="col-sm">Primera Columna</div>
+        <div class="col-sm">Segunda Columna</div>
+        <div class="col-sm">Tercera Columna</div>
+      </div>
+    </div>
+
+Genera 3 columnas de igual tamaño que estarán centradas gracias a:
+	<div class="container">
+
+Hace la veces de eje principal : <div class="row">
+
+Hace de eje perpendicular:  <div class="col-sm">
+
+
+*******************************************************
+CONTENEDORES
+*******************************************************
+Proveen el centrado de sus elementos
+Ubican horizontalmente su contenido
+
+Tipos de containers:
+	1. Ancho responsivo
+	2. Container-fluid: Configura el ancho en 100% para todo los dispositivos
+
+Las row contiene columnas que las ubican horizontalmente
+	Cada columna:
+		1. Padding horizontal (controlar la separación entre ellas)
+		2. Se debe respetar que las row contengan siempre columnas y que las columnas siempre esten dentro de una row.
+		3. Si no se especifica el ancho de cada columna, estas ocuparan proporcionalmente el espacio de acuerdo a la cantidad de columnas
+
+*******************************************************
+GRILLA
+*******************************************************
+Bootstrap Maneja 12 columnas por filas. 
+Podemos configurar el ancho de nuestras columnas utilizando las clases:
+	.col-xl-*
+
+	*: Cantidad de columnas de 1 a 12 que queremos ocupar 
+
+
+*******************************************************
+RESPONSIVE BREAKPOINTS
+*******************************************************
+Bootstrap permite configurar 5 tipos de columnas responsivas segun cada breakpoint.
+Los breakpoints son determinados media queries que se adaptan a determinados dispositivos 
+
+
+*******************************************************
+PX EM REM
+*******************************************************
+Los breakpoints y contenedores son las unicas clases que se definen en pixeles.
+
+El resto de los elementos utilizan em y rem
+
+*******************************************************
+ALINEACIÓN VERTICAL
+*******************************************************
+3 Tipos:
+	1. Al comienzo
+	2. Al centro
+	3. Al final
+
+ALINEACION SOBRE FILAS
+  <div class="container align-items-start"> (start o center o end)
+      <div class="row">
+        <div class="col-sm">Primera Columna</div>
+        <div class="col-sm">Segunda Columna</div>
+        <div class="col-sm">Tercera Columna</div>
+      </div>
+    </div>
+
+ALINEACION SOBRE COLUMNAS
+	 <div class="container"> 
+      <div class="row">
+        <div class="col-sm align-self-start">
+        Primera Columna
+        </div>
+        <div class="col-sm align-self-center">
+        Segunda Columna
+        </div>
+        <div class="col-sm align-self-end">
+        Tercera Columna
+        </div>
+      </div>
+    </div>
+
+PARA UBICAR LA COLUMNAS DENTRO DE UNA FILA:
+	  <div class="container">
+      <div class="row justify-content-start"> (center o end o around o between)
+        <div class="col">Primera Columna</div>
+        <div class="col">Segunda Columna</div>
+        <div class="col">Tercera Columna</div>
+      </div>
+    </div>
+
+
+*******************************************************
+OFFSET
+*******************************************************
+Permite poner una columna tantas posiciones como querramos:
+	<div class="container">
+      <div class="row justify-content-start"> 
+        <div class="col-md-4">Primera Columna</div>
+        <div class="col-md-4 offset-md-4">Segunda Columna</div>
+      </div>
+    </div>
+
+Utilizamos dos clases para esto, primero el ancho con:
+	.col-xl-*
+Luego aplicamos el offset

@@ -1,0 +1,33 @@
+*************Pull*************
+
+
+git pull origin master : actualiza los archivos del repositorio local con lo existente en el 
+repositorio remoto.
+
+Una vez corregido los errores si hay conflicto hay que hacer un pull de merge para dejar
+el estado final en el repositorio remoto
+
+git init //crea el repositorio
+git config user.name "hanSolo" //agrega nuestra indetidad - username
+git config user.email "hansolo@starwars.com" //agrega nuestra identidad - email
+git remote add origin htttps://github.com/... //apunta al repositorio remoto
+git add
+git commit -m ""
+git push oirigin master
+
+web de consultas 
+
+http://dev.to/git
+http://ohshitgit.com
+http://git-scm.com
+
+
+EL CLONE VA EN LA CARPETA WWW
+
+git branch (nombre de la ramma) seleccionas la rama a la que queres cambiar de trabajo
+git pull origin (el nombre de la rama a la que queres pasar)
+
+siempre antes de hacer un commit se hace un pull para traer los nuevos cambios que pudieran haber hecho nuestros compañeros
+Luego hacemos un git add .
+git commit -m "aca nombramos los cambios"
+git push origin (aca el nombre de la rama en la que estamos trabajando)

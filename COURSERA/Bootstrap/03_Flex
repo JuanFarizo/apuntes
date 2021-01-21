@@ -1,0 +1,48 @@
+Al igual que el sistema de grillas debe estar dentro de un contenedor:
+
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-background
+
+	<div class="container">
+          <div class="d-flex flex-wrap"> **APLICAMOS D-FLEX Y LUEGO FLEX-WRAP** LO QUE HACE ES ENVOLVER LOS ELEMENTOS EN EL VIEWPORT
+        <div class="col-sm-3">
+          <h4>Hotel Mato</h4>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio, aliquid!</p>
+          <button class="btn">Reservar</button>
+        </div>
+        <div class="col-sm-3">
+          <h4>Hotel Bra</h4>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio, aliquid!</p>
+          <button class="btn">Reservar</button>
+        </div>
+        <div class="col-sm-3">
+          <h4>Hotel Col</h4>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio, aliquid!</p>
+          <button class="btn">Reservar</button>
+        </div>
+        <div class="col-sm-3">
+          <h4>Hotel Arg</h4>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio, aliquid!</p>
+          <button class="btn">Reservar</button>
+        </div>
+        <div class="col-sm-3">
+          <h4>Hotel Madrid</h4>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio, aliquid!</p>
+          <button class="btn">Reservar</button>
+        </div>
+      </div>
+    </div>
+
+
+clases:
+	d-flex: lo que hace es que los hijos se comporten con flex
+	flex-wrap: especifica si los elementos "hijos" son obligados a permanecer en una misma línea o pueden fluir en varias líneas
+
+
+
+Podemos no especificar la cantidad de columnas en el nombre de la clase y trabajar con la propiedad en los .hijos:
+	.hijos {
+	flex: <flex-grow><flex-shrink> | <flex-basis>
+	}
+
+	Especificamos cuanto va a crecer y flex-basis cual es el ancho definido. 
+	Si usamos esta propiedad no hace falta que usemos el col-*-* el cual define el ancho de las columnas

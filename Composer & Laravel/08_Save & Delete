@@ -1,0 +1,83 @@
+----------- SAVE ----------- 
+
+ELOQUENT PARA ESCRIBIR INFORMACION EN LA BASE DE DATOS
+- SE REQUIERE DOS NUEVAS RUTAS en /web.php: 
+	1) VA A LLEGAR POR GET A /agregarPelicula -> MUESTRA EL FORMULARIO PARA AGREGAR LA PELICULA (SOLO MUESTRA HTML)
+	2) VA A LLEGAR POR POST A /agregarPelicula -> RECIBE LA INFORMACION DEL FORMULARIO Y LA GUARDA EN LA BD -> Debo crear una funcion de agregar en el controller 
+	
+
+- DENTRO DE TODOS LOS FORMULARIOS ESTAMOS OBLIGADOS A  {{csrf_field()}} SINO NO FUNCIONA 
+
+- en PeliculasControlller.php agregar la funcion con un parametro
+
+	public function agregar(Request $req) { //la variable $req va a tener todos los datos del formulario
+	$peliculaNueva = new Pelicula();           //creo un objeto del tipo peliculaNueva
+	 
+	$peliculaNueva->title = $req['titulo'];   //le paso cada uno de los campos
+	$peliculaNueva->rating = $req['rating'];
+	$peliculaNueva->awards = $req['awards'];
+	
+	$peliculaNueva->save();    //la guardo (laravel hace el insert a la BD y si existe ya la pelicula laravel hace un update)
+	
+	return redirect("/peliculas"); //podemos finalizar el metodo con una redireccion en vez de una vista
+	}
+
+
+ SI QUIERE HACER UN UPDATE EN LA LINEA 13 DEBERIA $peliculaNueva = Pelicula::find($req['id']) ASI TRAIGO EL OBJETO PELICULA QUE VOY A ACTUALIZAR
+ 
+ 
+----------- DELETE ----------- 
+
+EN EL FORMULARIO AGREGAMOS UN CAMPO <input type="hidden" name="id" value="{{$pelicula->id}}">
+
+EN EL CONTROLLER DEBEMOS AGREGAR EL METODO BORRAR
+
+public function borrar(Request $req) {
+ $id = $req['id'];
+ $pelicula = Pelicula::find($id);
+ 
+ $pelicula->delete();
+ 
+ return redirect("/peliculas");
+}
+
+----------- VALIDACION -----------
+https://laravel.com/docs/master/validation#available-validation-rules
+
+EN LA FUNCION agregar en PeliculasControlller antes de todo hacemos la validacion:
+
+$reglas = [
+ "title" => "required|string|min:3|unique:movies,title",			//va el mismo name que utilizamos en HTML del formulario
+ "rating" => "required|numeric|min::0|max::10",
+ "awards" => "required|integer|min::0"
+];
+
+$mensajesDeError = [
+	"required" => "El campo :attribute es requerido",
+	"string" => "El campo :attribute debe ser un texto",
+	"min" => "El campo :attribute tiene un minimo :min",
+	"max" => "El campo :attribute tiene un maximo :max",
+	"numeric" => "El campo :attribute debe ser un numero",
+	"integer" => "El campo :attribute debe ser un numero entero",
+	"unique" => "El campo :attribute se encuentra repetido"
+];
+
+$this->validate($req, $reglas, $mensajesDeError);         //la funcion validate recibe 3 parametros: 1_El formulario 2_Reglas de validacion 3_Mensajes de error(este ultimo es optativo)
+
+
+
+EN LA VISTA PODEMOS MOSTRAR LOS ERRORES DE LA SIGUIENTE MANERA 
+@foreach ($errors->all() as $error)
+	<li> {{$error}} </li>
+@endforeach
+
+PODEMOS UTILIZAR OLD PARA PERSISTENCIA DE DATOS
+<input type="text" name="title" value="{{old("title")}}>
+
+
+
+
+
+
+
+

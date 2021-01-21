@@ -1,0 +1,29 @@
+FOOTER:
+clase:
+fixed-bottom 
+
+de modo que quede al final siempre como el nav bar top asi queda arriba por mas que se scrolee
+
+<footer class="fixed-bottom">
+      <div class="container_footer">
+        <div class="secfoot">
+          <div class="redes">
+            <h3>Redes</h3>
+            <a href="www.google.com.ar"><i class="fab fa-google-plus-g"></i></a><br />
+            <a href="www.facebook.com"><i class="fab fa-facebook-f"></i></a><br />
+            <a href="wwww.instagram.com"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="secfoot">
+          <h3>Nosotros</h3>
+          <address>Oroño 1187 Rosario Santa Fe CP: 2000</address>
+        </div>
+        <div class="secfoot">
+          <h3>Contacto</h3>
+          <p>
+            Telefono: 123123123 <br />
+            mail: asdasd@asdasd.com
+          </p>
+        </div>
+      </div>
+    </footer>

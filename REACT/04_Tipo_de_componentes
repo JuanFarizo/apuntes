@@ -1,0 +1,9 @@
+Tipo de componentes:
+
+Props = informacion que ingresa al componente mediante atributos. -> No es reactivo
+
+State = informacion que genera el componente internamente y que queda dentro del componente. -> Si es reactivo
+
+Statefull: Componente que tiene porps y estados. En general permite interactuar al usuario a traves de eventos.
+
+Stateless: Componente que tiene props. Solo reciben la informacion de afuera y la muestran.
