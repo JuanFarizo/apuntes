@@ -1,0 +1,95 @@
+1. Operadores aritméticos
+Se utilizan para realizar operaciones aritméticas simples en tipos de datos primitivos.
+
+*: Multiplicación
+/: División
+%: Modulo
++: Adición
+–: Resta
+
+2. Operadores unarios Los operadores unarios solo necesitan un operando. Se usan para incrementar, disminuir o negar un valor.
+
+–: Unario menos, utilizado para negar los valores.
++: Unario más, usado para dar valores positivos. Solo se usa cuando se convierte deliberadamente un valor negativo en positivo.
+++: Operador de incremento, utilizado para incrementar el valor en 1. Hay dos variedades de operador de incremento.
+Pre-Incremento: el valor se incrementa primero y luego se calcula el resultado.
+Post-Incremento: el valor se usa por primera vez para calcular el resultado y luego se incrementa.
+—: Operador de decremento , usado para incrementar el valor en 1. Hay dos variedades de operador de incremento.
+Pre-Decremento: el valor se disminuye primero y luego se calcula el resultado.
+Post-Decremento: el valor se usa por primera vez para calcular el resultado y luego se disminuye.
+! : Operador lógico “no”, utilizado para invertir un valor booleano.
+
+
+3. Operador de asignación (=)
+El operador de asignación se usa para asignar un valor a cualquier variable. Tiene una asociación de derecha a izquierda, es decir, el valor dado en el lado derecho del operador se asigna a la variable de la izquierda y, por lo tanto, el valor del lado derecho debe declararse antes de usarlo o debe ser una constante.
+
++ = , para sumar el operando izquierdo con el operando derecho y luego asignarlo a la variable de la izquierda.
+– = , para restar el operando izquierdo con el operando derecho y luego asignarlo a la variable de la izquierda.
+* = , para multiplicar el operando izquierdo con el operando derecho y luego asignándolo a la variable de la izquierda.
+/ = , para dividir el operando izquierdo con el operando derecho y luego asignarlo a la variable de la izquierda.
+^ = , para aumentar la potencia del operando izquierdo al operando derecho y asignarlo a la variable de la izquierda.
+% = , para asignar el módulo del operando izquierdo con el operando derecho y luego asignarlo a la variable de la izquierda.
+
+
+4. Operadores relacionales
+Estos operadores se utilizan para verificar relaciones como igualdad, mayor que, menor que. Devuelven el resultado booleano después de la comparación y se usan ampliamente en las instrucciones de bucle, así como en las sentencias condicionales if/else. El formato general es, variable operador_relacion valor
+
+Algunos de los operadores relacionales son:
+
+==, Igual a: devuelve verdadero si el valor del lado izquierdo es igual al lado derecho.
+! =, No igual a: devuelve verdadero si el valor del lado izquierdo no es igual al lado derecho.
+<, menos que: el resultado verdadero si el valor del lado izquierdo es inferior al del lado derecho.
+<=, menor o igual que: devuelve verdadero si el valor del lado izquierdo es menor o igual que el lado derecho.
+>, Mayor que: devuelve verdadero si el valor del lado izquierdo es mayor que el lado derecho.
+> =, Mayor que o igual a: regresa verdadero si el valor del lado izquierdo es mayor o igual que el lado derecho.
+
+Operadores lógicos
+Estos operadores se utilizan para realizar operaciones “lógicas AND” y “lógicas OR”, es decir, la función similar a la puerta AND y la puerta OR en electrónica digital. Una cosa a tener en cuenta es que la segunda condición no se evalúa si la primera es falsa, es decir, tiene un efecto de cortocircuito. Se usa ampliamente para probar varias condiciones para tomar una decisión.
+
+Los operadores condicionales son:
+
+&&, AND lógico: devuelve verdadero cuando ambas condiciones son verdaderas.
+|| , O lógico: devuelve verdadero si al menos una condición es verdadera.
+
+6. Operador ternario
+Ternario es una versión abreviada de la declaración if-else. Tiene tres operandos y de ahí el nombre ternario. El formato general es:
+
+La declaración anterior significa que si la condición se evalúa como verdadera, entonces ejecuta las instrucciones después del ‘?‘ de lo contrario, ejecuta las instrucciones después de ‘:‘.
+
+7. Operadores bit a bit
+Los operadores a nivel de bits se utilizan para realizar la manipulación de bits individuales de un número. Se pueden usar con cualquiera de los tipos enteros. Se utilizan al realizar operaciones de actualización y consulta de árbol indexado binario.
+
+&, Operador bit a bit AND: Si ambos bits de entrada son 1, establece el resultado en 1. De lo contrario da como resultado 0. El resultado binario final se muestra en decimal.
+| , Operador bit a bit OR: Si al menos uno de los dos bits de entrada es 1, establece el resultado en 1. De lo contrario da como resultado 0. El resultado binario final se muestra en decimal.
+^, Operador bit a bit XOR: Si uno de los bits de entrada es 0 y el otro 1, el resultado es 1. Si ambos bits comparados son iguales, el resultado es 0. El resultado binario final se muestra en decimal.
+~, Operador bit a bit de complemento (NOT): este es un operador unario que devuelve la representación complementaria del valor de entrada, es decir, con todos los bits invertidos. El resultado binario final se muestra en decimal.
+
+8. Operadores shift
+Los operadores shift de Java se usan para desplazar los bits de un número hacia la izquierda o hacia la derecha, multiplicando o dividiendo el número por dos, respectivamente. Se pueden usar cuando tenemos que multiplicar o dividir un número por dos.
+
+<<, operador de desplazamiento a la izquierda : desplaza los bits del número hacia la izquierda y llena con “0” los bits desplazados. Efecto similar a la multiplicación del número con una potencia de dos.
+>>, Operador de desplazamiento a la derecha firmado: desplaza los bits del número a la derecha y llena con “0” los bits desplazados. El bit más a la izquierda depende del signo del número inicial. Efecto similar a partir de dividir el número con alguna potencia de dos.
+>>>, Operador de cambio a la derecha sin signo: desplaza los bits del número a la derecha y llena con “0” los bits desplazados. El bit más a la izquierda se establece en 0.
+
+9. Operador de Instancia (instanceof)
+El operador de instancia se usa para verificar el tipo. Se puede usar para probar si un objeto es una instancia de una clase, una subclase o una interfaz.
+
+
+10. Precedencia de Operadores
+La precedencia y las reglas asociativas se usan cuando se trata de ecuaciones híbridas que involucran a más de un tipo de operador. En tales casos, estas reglas determinan qué parte de la ecuación considerar primero, ya que puede haber muchas valoraciones diferentes para la misma ecuación. La siguiente tabla muestra la precedencia de los operadores en orden decreciente como magnitud, con la parte superior representando la precedencia más alta y la inferior con la prioridad más baja.
+
+Tabla de Precedencia y asociatividad de los operadores en Java.
+Operador	Aociatividad
+++ —	De derecha a izquierda
+++ — + – !	De derecha a izquierda
+* / %	De derecha a izquierda
++ –	De derecha a izquierda
+< <= > >=	De derecha a izquierda
+== !=	De derecha a izquierda
+&	De derecha a izquierda
+^	De derecha a izquierda
+|	De derecha a izquierda
+&&	De derecha a izquierda
+||	De derecha a izquierda
+?:	De derecha a izquierda
+= += -= *= /= %=	De derecha a izquierda

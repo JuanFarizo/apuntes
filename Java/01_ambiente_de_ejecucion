@@ -1,0 +1,25 @@
+Ambiente de ejecución:
+	1. Tiempo de compilación:
+		Tenemos el archivo.java  aplicamos el comando javac, así compila y obtenemos asi el archivo.class una vez que el código se encuentra debugueado y sin errores.
+	2. Tiempo de ejecución:
+		Primero se detecta la clase que se desea ejecutar (es la que va a ser cargada), el archivo.class se carga en memoria, y el verificador de bytecode comprobará que no haya errores, de esta manera el interprete ejecuta el programa.
+
+El archivo con extensión.java se compila por medio del comando javac, el cual genera el código conocido como
+bytecode. Este archivo generado tiene la extensión .class y es el que podemos utilizar para ejecutar
+nuestro programa.
+
+
+ Cada versión o edición, incluye su propio SDK (Software Development Kit), el cual permite a los programadores crear, compilar y ejecutar las aplicaciones creadas en cada versión. La versión estándar de Java (Java Estándar Edition) se utiliza para crear software para aplicaciones de Escritorio (Desktop) o Applets que se ejecutan en un navegador Web.
+
+
+La versión empresarial conocida como Java EE, se utiliza para crear aplicaciones empresariales de gran escala, de lado del servidor, y este tipo de aplicaciones pueden ser accedidas desde clientes creados con la versión estándar, o cualquier otro tipo de cliente, como clientes Web, o Servicios Web, entre otros.
+
+
+La versión JME es la versión Micro de Java con el objetivo de crear aplicaciones para celulares y dispositivos móviles, así como
+microchips para cámaras de seguridad, GPS, routers, o cualquier dispositivo con una capacidad mucho menor tanto de procesamiento
+como de almacenamiento. 
+
+
+Existen distintas clasificaciones respecto al manejo de memoria en Java. Una de las simplificaciones más importantes que aportó Java respecto al manejo
+de la memoria de manera dinámica.
+

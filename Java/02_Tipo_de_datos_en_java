@@ -1,0 +1,33 @@
+Tipo de datos en java
+	1. Tipos Primitivos:
+		a. Tipos enteros:
+			I. Byte (8 bits) Default: 0
+			II. Short (16 bits) Default: 0
+			III. Char (16 bits) Default: \u0000
+			IV. Int (32 bits) Default: 0
+			V. Long (64 bits) Default: 0
+		b. Tipos Flotantes
+			I. Float (32 bits) Default: 0.0
+			II. Double (64 bits) Default: 0.0
+		c. Booleans
+	2. Tipos Object:
+		a. Clases
+		b. Interfaces
+		c. Arreglos
+
+En Java el manejo de cadenas es un tipo Object. En Java es necesario el uso del operador new para crear un nuevo objeto. Sin embargo cuando hablamos de cadenas esto no es necesario. Podemos simplemente declarar un tipo String y
+asignar un valor cadena directamente a esta variable
+
+En Java, a diferencia de otros lenguajes, no se permite la sobrecarga de operadores, lo que significa que no podemos alterar la función de los operadores para hacer lo que nosotros deseemos, sin embargo existe una excepción a esta regla cuando manejamos tipos cadena. Cuando usamos el operador + y se detecta un tipo String en la operación, se dice que tenemos el contexto String, y por lo tanto en lugar de sumar valores, lo que hace Java es concatenar los valores que se encuentren en la operación.
+
+Caracteres de escapes al utilizar cadenas:
+	\t Inserta un tabulador
+	\b Inserta un retroceso
+	\n Inserta una nueva linea
+	\r Inserta un retorno
+	\f Se mueve a la siguiente pagina (para impresoras)
+	\' Inserta una comilla siple
+	\" Inserta una comilla doble
+	\\ Inserta una barra inv
+
+Para comprar string utilizamos la función equals.

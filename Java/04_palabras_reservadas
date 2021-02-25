@@ -1,0 +1,17 @@
+Todas las Palabras Claves Reservadas en Java:
+
+Tabla de Palabras Claves Reservadas en Java
+abstract	assert	boolean	break	byte	case	catch	char	class	const	continue
+default	do	double	else	enum	extends	false	final	finally	float	for
+goto	if	implements	import	instanceof	int	interface	long	native	new	null
+package	private	protected	public	return	short	static	strictfp	String	super	switch
+synchronized	this	throw	throws	transient	true	try	void	volatile	while
+
+
+[Actualización] Sesenta y una palabras clave están actualmente definidas en el lenguaje Java. Estas palabras clave, combinadas con la sintaxis de los operadores y separadores, forman la definición del lenguaje Java. En general, las palabras clave no se pueden usar como nombres para una variable, clase o método.
+Las excepciones a esta regla son las nuevas palabras clave context-sensitive añadidas por JDK 9 al soporte de módulos.
+
+Nuevas palabras claves reservadas en Java
+open	module	requires	transitive
+exports	opens	to	uses
+provides	with	
