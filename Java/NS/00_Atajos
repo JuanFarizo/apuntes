@@ -1,0 +1,15 @@
+Atajos de java:
+	- CTRL + Click: LLeva a la definición de la variable.
+	- Shift + Alt + r: Sirve para refactorizar el nombre de métodos o variables
+	- CTRL + d: Borra una línea.
+	- Shift + Alt + j: Agregar comentarios en las clases/métodos
+	- Shift + Alt + f: Formatear el código
+	- CTRL + o: Dentro de una clase muestra los métodos y los atributos
+	- CTRL + Shift + c: Comenta la selección del código
+	- CTRL + Shift + o: resuelve los imports
+	- F4: Muestra la jerarquia de una clase
+
+	
+Al depurar:
+	- CTRL + Shift + d: si me paro sobre la variable me da el valor de la misma en ese momento.
+

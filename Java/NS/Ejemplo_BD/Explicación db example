@@ -1,0 +1,21 @@
+como es la entidad:
+	id
+	name
+	toString()
+
+
+como es el atributo:
+	entityId
+	id
+	name
+	_type
+	particles -> es un List<Particle>
+	toString()
+
+
+1)Por cada entidad va a crear 10 atributos con, segun el tipo de atributo que lo saca de la clase AttributeType (que es un enumerado) va a crear a la lista List<Particle> una nueva particula constituida por entityId, attributeId, 0, ParticleType.ElTipo
+
+En definitiva lo que haces es poblar la Lista<Particle> de elementos de la clase Atribute y devolverme el ArrayList<Entity>(); 
+
+
+2)
