@@ -46,12 +46,14 @@ Recordar que el constructor por defecto (sin argumentos) se genera si y sólo si
 La palabra clave this - que puede ser usada únicamente dentro de un método - devuelve la referencia al objeto el que el método ha sido invocado.
 Se puede usar esta referencia como cualquier otra referencia a un objeto. Conviene observar que, si se invoca un método de una clase desde otro método de la misma clase, no es necesario usar this ya que se puede invocar el método directamente.
 
+!!!!!!!!!!!SE RECOMIENDA LA NO UTILIZACIÒN DE LA PALABRA CLAVE THIS EN LAS CLASES¡¡¡¡¡¡¡¡¡¡¡¡¡¡
+
 	class Melocoton {
 	   void recoger() { /*...*/ }
 	   void pelar() { recoger(); /*...*/ }
 	}
 
-La palabra clave this se usa únicamente en aquellos casos especiales en los que es necesita usar una referencia explícita al objeto que se está manipulando. Por ejemplo, es usando frecuentemente en la cláusula return cuando se quiere devolver una referencia al objeto en uso
+La palabra clave this se usa únicamente en aquellos casos especiales en los que es necesita usar una referencia explícita al objeto que se está manipulando. Por ejemplo, ES USANDO FRECUENTEMENTE EN LA CLÁUSULA return CUANDO SE QUIERE DEVOLVER UNA REFERENCIA AL OBJETO EN USO
 
 	public class Hoja {
 	   int i;
@@ -76,7 +78,10 @@ DENTRO DE UN CONSTRUCTOR, this() toma otra significado cuando se le añade una l
 ------------SIGNIFICADO DE STATIC------------
 En los métodos static no existe this. No es posible invocar un método no-static desde un método static (aunque lo contrario sí es posible) y se puede invocar un método static usando la clase, sin objeto alguno. 
 
+¡¡¡¡¡IMPORTANTE!!!!
 Definiendo un método static dentro de una clase se puede acceder a otros métodos static y a campos static. Con un método static no es posible enviar un mensaje a un objeto ya que no existe una referencia this asociada
+¡¡¡¡¡IMPORTANTE!!!!
+
 
 
 ---------PURGADO: FINALIZACIÓN Y RECOLECCIÓN DE BASURA--------------
