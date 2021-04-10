@@ -1,0 +1,76 @@
+HTTP: Es un protocolo sin estado (stateless), esto es así ya que cuando la request inicial ha concluido con el envio del response, la comunicación servidor-cliente se pierde.
+
+En http el cliente especifica la acción: GET/POST/PUT/DELETE
+
+La inforación se envía mediante HEADERS, tanto el request como el response.
+
+Antes de los websocket se utilizaba una tecnica llamada Polling (sondeo): en la que el cliente en intervalos de tiempo pedia datos al servidor creando una petición (un request) y una respuesta (response), creando conexiones con el servidor innecesarias.
+Una alternativa fue Long Polling, que el servidor recibia una petición, pero no enviaba nada hasta que no hubiera cambios, dejando la conexión abierta hasta que haya una respuesta.
+Otra técnica es el Server Sent Event, la cual no es bidireccional, es una alternativa para "real-time", usa EventSource API para enviar mensajes desde el servidor.No soporta el envio de datos binarios, que si lo hace websocket (no binary mensagges).
+
+
+
+Web Socket (Standar HTML5): Permiten una comunicación bidireccional,  Full duplex, es un HTTP upgrade usa la misma TCP connection sobre ws:// o wss://. Solo envía headers una vez (para el handshake)
+
+Comunican usando la capa TCP, la conexión se establece sobre HTTP, es un mecanismo handshake entre el cliente y el servidor. Luego del handshake la conexión es actualizada a TCP.
+								___
+HTTP Upgrade Header Request  -> | | invoke  -> 
+								| |	 		  |->Make upgrade header
+HTTP Upgrade Header response <- |_| return <-|
+
+1º es la llamada HTTP que es iniciada del lado del cliente:
+2º una vez que el handshake comprueba la key y es aceptada la comunicación se realiza via TCP
+3º los datos son enviados por TCP
+
+	El protocolo tiene 2 partes:
+		1. Un handshake:
+			El handshake luce asi:
+				The handshake from the client looks as follows:
+				Request-Line format:
+
+		        GET /chat HTTP/1.1
+		        Host: server.example.com -> nombre del servidor
+		        Upgrade: websocket -> llamada de actualización
+		        Connection: Upgrade -> define que es una llamada de actualización
+		        Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ== ->llamada generada aleatoriamente para poder autenticar la respuesta (clave de autenticación del handshake)
+		        Origin: http://example.com -> muestra donde se ha originado la petición
+		        Sec-WebSocket-Protocol: chat, superchat
+		        Sec-WebSocket-Version: 13
+
+		   The handshake from the server looks as follows:
+		   		Status-Line format:
+
+		        HTTP/1.1 101 Switching Protocols
+		        Upgrade: websocket
+		        Connection: Upgrade
+		        Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo= -> Clave que es decodificada y comprobada con la key enviada para ver que la respuesta se envia al cliente de origen correcto.
+		        Sec-WebSocket-Protocol: chat
+
+		2. el data transfer: Una vez que el servidor y el cliente tienen los handshake exitosamente la parte de data transfer comienza. 
+		Son dos canales de comunicaciones donde c/u de forma independiente puede enviar data.
+
+
+WebSocket NO remplaza HTTP:
+	- WS es un upgrade de HTTP
+	- HTTP provee caching automaticamente.
+	- WS a menudo requieren configuración especial.
+	- WS no se puede comunicar con REST
+
+Cuando se utiliza WS necesitamos una conexión full-duplex: la cual es util para juegos basadoen la web, chats, o cualquier cosa que requiera de baja latencia en la conexión.
+Implementar WS hace que balancear la carga del servidor sea más complicado, no es tan simple como implementación de HTTP normal, requiere extra configuración.
+
+WS Client:
+	- Usado para interactuar con servidores WebSockets (construidos en muchos lenguajes, como JS o python,etc).
+	- Clients existen para MicroPy, Arduino, (IOT)
+	- El cliente más común son los basados en web y usan JS.
+	- Requiere que el servidore este habilitado para interactura con WS.
+
+SocketIO:
+ Libreria de javascript para manipular WebSockets, incluyendo mecanismos de fallback y auto-reconnection
+ Manejo de eventos de disconnection y connection 
+ Namespacing y Room broadcasting
+
+ Deployment:
+ 	- EVentlet and Gevent to monkey patch async o simplemente usar el standar threading
+ 	- Async web frameworks son ideales
+ 	- Usar message queue to run multiple instances behind: balancear la carga con sticky sessions on workers
