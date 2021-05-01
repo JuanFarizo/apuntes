@@ -1,0 +1,21 @@
+Amperaje y VoltiosVoltios.
+
+En principio lo malo es suministrar más voltios de la cuenta debido a que puede haber componentes que no soporten tanta tensión o que se vean obligados a disipar más potencia de la que aguantan. Normalmente menos voltios significa que igual no funciona el equipo pero no se muere ningún componente. No es normal que se haga un diseño tan malo que con menos tensión se queme pero... hay gente capaz de todo.
+
+De todas formas los equipos se diseñan para que trabajen dentro de un margen razonable de variación de la tensión de alimentación.
+
+Amperios.
+
+Cuando se habla de amperios se habla de lo que normalmente consume un equipo o de su posible consumo máximo. Si la cantidad de amperios es referente a la fuente de alimentación que le suministra voltios al equipo quier decir la cantidad de corriente que es capaz de dar si se la piden sin sobrecargarse.
+
+Si un equipo consume 1 A y la fuente puede dar 2 A eso no quiere decir que el equipo se vaya a quemar porque él va a seguir consumiendo 1 A. La fuente irá muy cómoda porque solo le están pidiendo la mitad de lo que es capaz de dar.
+
+El problema sería que la fuente solo diese 1 A y el equipo pidiese 2 A. En ese caso se sobrecargaría y podrían pasar varias cosas. Que se queme si no tiene las protecciones adecuadas. Si la protección de la fuente es un fusible que este se funda con el exceso de consumo ya si no se quema toda. Si la protección es electrónica puede que limite la corriente a lo máximo que es capaz de dar con lo que el equipo no funcionaría o que corte la salida hasta que se desenchufe al equipo abusón.
+
+
+RESUMEN:
+	Si la diferencias son notables puede pasar lo siguiente:
+-Si al equipo se le da más voltios, puede quemarse el equipo.
+-Si al equipo se le da menos voltios, simplemente que el equipo no funcionará.
+-Si la fuente tiene más amperaje que el equipo, miel sobre hojuelas.
+-Si la fuente tiene menos amperaje que el que consume el equipo, la fuente peligra.

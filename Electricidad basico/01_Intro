@@ -1,0 +1,57 @@
+Curso de electricidad basico:
+
+Tensión: diferencia de potencial necesario para que fluya la corriente.
+Se mide en Voltios (V).
+
+A la diferencia de potencial, que es la que hay entre el cable de fase y el neutro le llamamos tensión.
+
+Si los equipos trabajan con menos voltaje, debemos usar transformadores que redunce la tensión.
+
+
+Voltaje: Indica la tensión a la que esta funcionando una instalación. 
+
+Se le llama Intesidad a la cantidad de electricidad que tenemos (se mueve por nuestra instalación, similar al caudal del agua) y se mide en Amperios (A). Segun el consumo que tenemos, fluye mayor o menor caudal de corriente. 
+
+Esta relacionado la capacidad que yo tengo de tener intensidad eléctrica con el tipo de resistencia que yo tenga. Si yo tengo un material muy resistente, eso frena todo el trabajo de la energía eléctrica y su desplazamiento.
+
+Si tenemos un cable demsaiado fino para la intensidad de la corriente, los electrones chocan desordenadamente con los átomos del material y lo recalientan rápidamente. A la dificultad que encuentran los electrones para moverse se le llama resistencia y se mide en ohmios (ohm, letra omega).
+
+
+Los aparatos eléctricos transofrman la intesidad de corriente en potencia para funcionar. La potencia se mide en vatios (W).
+La intensidad depende de la demanda de vatios que consumamos.
+
+Cuando enchufamos un cable lo que consumimos es potencia, estamos consumiento vatios. 
+¿Cómo se miden los vatios?
+	Ej, tenemos dos calentadores que consumen 2100W cada uno, en total tenemos 4200W
+
+	Para saber la Intensidad que tiene que tener el circuito usamos la fórmula simplificada I = P/V
+
+	Como sabemos que la potencia necesaria es de 4200W y que la tension de nuestra casa es de 230V, la intesidad requerida será:
+		I = 4200W / 230 V  =  18,26A
+
+	Necesitaremos para el circuito un interruptor automático de 20A (La térmia, esta dispuesta a aceptar 20A, por encima del Amperaje nos deja sin corriente, es decir, limitan el Amperaje) .
+
+	Para evitar recalientamiento los cables tienen que tener un diámetro adecuado. 
+
+Orientación de cables para circuitos de 230v
+
+Intensidad - Sección cable mm2 - Diyuntor
+1A 				0,35				6-
+3A 				0,5					6
+8A				0,75				6	
+10A				1,0 - 1,5			6-10
+13A				1,5					10-15
+18A				2,5					15-20
+20A				4
+25A				6					20-25
+32A				10					30-35
+ 
+
+Voltio x Amperes = Potencia
+
+
+Amperes: Es la capacidad admisible de intensidad que soporta un conductor. Tenemos que calcular los amperes para saber que conductor debemos usar. 
+
+
+
+

@@ -1,0 +1,21 @@
+Patrón de diseño wrapper o adapter:
+	 Permite la colaboración entre objetos con interfaces incompatibles. Convierte la interfazd e una clase en otra interfaz que el cliente espera. Así consigue que trabajen juntas clases que de otro modo no podrían.
+
+	 El adaptador envuelve uno de los objetos, y esconde la complejidad de la conversión. El objeto envuelto no es cosnciente de la existencia de un wrapper.
+
+	 Los adaptadores no solo convierten datos a varios formatos, sino que también ayudan a objeto con distintas interfaces a colaborar entre sí.
+
+	 Realizando una adaptación de la interfaz de la clase que proporciona el servicio a la que la solicita.
+
+	1. El adaptador obtiene una interfaz compatible con uno de los objetos existentes.
+ 	2. Utilizando esta interfaz, el objeto existente puede invocar con seguridad los métodos del adaptador.
+ 	3. Al recibir una llamada, el adaptador pasa la solicitud al segundo objeto, pero en un formato y orden que ese segundo objeto espera.
+
+
+ Estructura:
+ 	Adaptador de objetos:
+	Esta implementación utiliza el principio de composición de objetos: el adaptador implementa la interfaz de un objeto y envuelve el otro. Puede implementarse en todos los lenguajes de programación populares.
+
+Aplicabilidad:
+	Utilizar wrapper cuando quieras usar una clase existente, pero cuya interfaz no sea compatible con el resto del código.
+	Colocar la funcionalidad que falta dentro de una clase adaptadora. Después puedes envolver objetos a los que les falten funciones, dentro de la clase adaptadora, obteniendo esas funciones necesarias de un modo dinámico. Para que esto funcione, las clases en cuestión deben tener una interfaz común y el campo de la clase adaptadora debe seguir dicha interfaz. Este procedimiento es muy similar al del patrón Decorator.

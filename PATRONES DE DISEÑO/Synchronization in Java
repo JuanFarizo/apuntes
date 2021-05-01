@@ -1,0 +1,152 @@
+Synchronization in Java: es la capacidad de controlar el acceso de múltiples threads a cualquier recurso compartido.
+La sincronización es utilizada para prevenir la interferencia entre threads.
+Para prevenir problemas de consistencia.
+Permite que no comience un hilo hasta que no termine el anterior.
+
+Java proporciona una forma de crear subprocesos y sincronizar su tarea mediante el uso de bloques sincronizados. Los bloques sincronizados en Java se marcan con la palabra clave synchronized. Un bloque sincronizado en Java se sincroniza en algún objeto (un thread se sincroniza cuando se convierte en propietario del monitor del objeto -> bloqueo)
+Todos los bloques sincronizados sincronizan en el mismo objeto solo pueden tener un thread ejecutándose dentro de ellos a la vez. Todos los demás subprocesos que intentan ingresar al bloque sincronizado se bloquean hasta que el subproceso dentro del bloque sincronizado sale del bloque.
+
+
+// Only one thread can execute at a time. 
+// sync_object is a reference to an object
+// whose lock associates with the monitor. 
+// The code is said to be synchronized on
+// the monitor object
+synchronized(sync_object)
+{
+   // Access shared variables and other
+   // shared resources
+}
+
+Esta sincronización se implementa en Java con un concepto llamado monitors. Solo un thread puede poseer un monitor en un momento dado. Cuando un thread adquiere un lock, se dice que ha entrado en el monitor. Todos los demás threads que intenten ingresar al blocked monitor serán suspendidos hasta que el primer subproceso salga del monitor.
+
+
+2 Tipos de sincronización (formas para bloquear): 
+	- Process Sync.
+		-
+	- Thread Sync. :
+		- Mutual Exclusive: ayuda a los threads a no interferir unos con otros mientras comparten información. Esto se puede alcanzar de 3 maneras:
+			- Synchronized method: Declaramos un método como synchronized, es usado para lock un objeto para cualquier recurso compartido.
+			- Synchronized block:  Puede ser utilizado para perfomar sincronización de cualquier parte específica del método. Es usado tmb para lock un objeto para cualquier recurso compartido. Su scope es menor que el de method.
+			- Static Synchronization: Si declaramos un método estático como synchronized lo que estamos haciendo es un lock de la clase y no el objeto. Si sincronizamos un block y lo que le pasamos la clase ej. synchronized (Table.class) el .class hace denota referencia a la clase, es equivalente a hacer un método synchronized estatico.
+		- Cooperation  (Inther thread communication in java)
+
+Concepto de Lock en Java: Sincronización esta construida sobre una entidad interna conocida como lock o monitor. Cada objeto tiene un lock asociado a el. Por convención un threads necesita acceso a campos de objetos de forma consistente antes de adquirir un lock y antes de acceder al objeto, luego libera el lock cuando termina con el uso del objeto.
+
+Deadlock in java:
+	Ocurre cuando 2 threads estan esperando que el otro libere el lock que necesita pero ambos no pueden hacerlo porque requieren el que tiene el otro.
+	thread 1 -> lock A -> wating for lock B
+	thread 2 -> lock B -> wating for lock A
+
+
+Comunicación Inter-Thread -> A través de métodos de la clase Object para comunicación.
+ Co-Operation permite a synchronized threads  comunicarse unos a otros.
+ Cooperation es un mecanismo en el cual un thread se detiene en su ejecución en una sección critica y otro thread es permitido ingresar (o lock) en la misma sección crítica a ser ejecutada.
+ Es implementado por los siguientes metodos de la clase Object:
+ wait()
+ notify()
+ notifyAll()
+Estos métodos deben ser invocados en un método o bloque sincronziado del objeto invocante de los métodos y deben usarse dentro de un bloque try/catch
+
+1) wait() o wait(long timeout) method:
+	Provoca que el thread espere hasta que ocurra alguna condición, en cuyo caso se usan notify o notifyAll para notificar a los threads en espera para continuar con la ejecución. o hasta que haya transcurrido una cantidad de tiempo especificad.
+	Causa que el thread actual libere el lock que mantiene sobre el objeto. 
+	El hilo actual debe poseer el monitor de este objeto, wait() solo puede invocarse desde el interior del código sincronizado, dentro de un try/catch , de lo contrario, arrojará una excepción.
+	Solo puede ser invocado por un thread que es el propietario del bloqueo del objeto.
+	Al invocar el método el thread se incapacita para el scheduler y permanece inactivo hasta que ocurre alguno de los eventos(métodos que se detallan a continuación o el tiempo especificado en el wait ha transcurrido).
+	Luego el thread pasa a estar disponible otra vez y compite por el bloqueo del objeto.
+
+2) notify() method:
+	Despierta un thread unico que esta esperando en el monitor de este objeto. Si un thread esta esperando este objeto, se elige uno de ellos para ser despertado. La elección es arbitraria y se produce a discreción de la implementación. Solo puede usarse dentro de un código sincronizado. El thread no podrá continunar hasta que el thread en curso renuncie al bloqueo sobre el objeto.
+
+3) notifyAll() method
+	Despierta todo los threads que estan esperando en el monitor de este objeto.
+
+
+// Class for send a message using Threads
+class ThreadedSend extends Thread
+{
+    private String msg;
+    Sender  sender;
+  
+    // Recieves a message object and a string
+    // message to be sent
+    ThreadedSend(String m,  Sender obj)
+    {
+        msg = m;
+        sender = obj;
+    }
+  
+    public void run()
+    {
+        // Only one thread can send a message
+        // at a time.
+        synchronized(sender)
+        {
+            // synchronizing the snd object
+            sender.send(msg);
+        }
+    }
+}
+
+Alternately, we could define the whole send() block as synchronized and it would produce the same result. 
+
+Alternativamente, podríamos definir todo el send() block como synchronized y produciría el mismo resultado. 
+
+// An alternate implementation to demonstrate
+// that we can use synchronized with method also.
+class Sender 
+{
+    public synchronized void send(String msg)
+    {
+        System.out.println("Sending\t" + msg );
+        try 
+        {
+            Thread.sleep(1000);
+        } 
+        catch (Exception e) 
+        {
+            System.out.println("Thread interrupted.");
+        }
+        System.out.println("\n" + msg + "Sent");
+    }
+}
+
+ A veces es preferible sincronizar solo una parte de un método . Los bloques sincronizados de Java dentro de los métodos lo hacen posible.
+ // One more alternate implementation to demonstrate
+// that synchronized can be used with only a part of 
+// method
+class Sender 
+{
+    public void send(String msg)
+    {
+        synchronized(this)
+        {
+            System.out.println("Sending\t" + msg );
+            try 
+            {
+                Thread.sleep(1000);
+            } 
+            catch (Exception e) 
+            {
+                System.out.println("Thread interrupted.");
+            }
+            System.out.println("\n" + msg + "Sent");
+        }
+    }
+}
+
+
+Diferencias entre Wait y Sleep:
+	Wait():
+		- Libera el lock
+		- es método de la clase Object
+		- no es estático
+		- debe ser notificado por notify() o notifyAll()
+
+	Sleep():
+		- No libera el lock
+		- es un método de la clase Thread
+		- es un método estático
+		- después de un periodo de tiempo establecido, sleep es completado
+

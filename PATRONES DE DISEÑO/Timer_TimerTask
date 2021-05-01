@@ -1,0 +1,11 @@
+Asignación de tareas mediante clases Timer y TimerTask:
+
+- TIMER facilita a los threads la programación de ejecución futura de tareas. Las tareas se pueden programar para ejecutarse una vez o de forma repetida en intervalos regulares..
+ A cada objeto Timer le corresponde un Thread que se usa para ejecutar todas las tareas del timer secuencialmente.
+ Los tiempos de la tarea deben completarse rápidamente.
+
+- TIMERTASK: clase abstracta con método abstracto llamado run().
+
+
+	
+

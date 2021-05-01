@@ -1,0 +1,68 @@
+Patron Factory:
+	Es un patrón de diseño creacional que sirve para construir una jerarquía de clases. 
+
+	La función fundamental es encapsular una jerarquía de objetos y reducir el conjunto de conceptos con los que trabajamos. En lugar de llamar al operador new para construir objetos, invocamos a un método factory especial, los objetos devueltos se llaman "productos".
+	Es más fácil extender el código de construcción de producto de forma independiente al resto del código.
+
+	Se decide la clase a instanciar basándose en la información que provee el cliente (se llama código cliente a quien utiliza el método factory). La subclase (en el ejemeplo ConcreteCreator) decidirá que clase instanciar. Sobreescribiendo el método factory podemos cambiar la clase de productos creados por el método.
+
+Aplicabilidad:
+	Utiliza el Método Fábrica cuando no conozcas de antemano las dependencias y los tipos exactos de los objetos con los que deba funcionar tu código.
+	Utiliza el Factory Method cuando quieras ofrecer a los usuarios de tu biblioteca o framework, una forma de extender sus componentes internos.
+	Utiliza el Factory Method cuando quieras ahorrar recursos del sistema mediante la reutilización de objetos existentes en lugar de reconstruirlos cada vez.
+	Cuando una clase no puede anticipar que tipo de objeto debe crear.
+	Cuando necesitamos tener un lugar específico donde se encuentre el conocimiento de cómo crear clases.
+	
+
+
+HAY 2 CLASES PRINCIPALES:
+	1. CREADOR -> CREA INSTANCIAS DE PRODUCTO, LAS SUBLCASES DEBEN PODER ESPECIFICAR LOS TIPOS CONCRETOS DE PRODUCTOS A CREAR.
+	LA CLASE ABSTRACTA TIENE UN MÉTODO (FACTORY) QUE DEVUELVE UN PRODUCTO, LAS SUBCLASES CREADORAS PUEDEN SOBRESCRIBIR ESTE MÉTODO PARA DOLVER SUBLCASES APROPIADAS DEL PRODUCTO.
+	2. PRODUCTO.
+
+
+	abstract class Creator {
+    // Definimos método abstracto 
+    public abstract Product factoryMethod();
+	}
+
+	//Ahora definimos el creador concreto:
+	public class ConcreteCreator extends Creator {
+	    public Product factoryMethod() { ->Devuelve la interfaz
+	        return new ConcreteProduct(); -> Devuelve un tipo 
+	        								que extiende de la interfaz
+	    }
+	}
+
+
+	//Definimos el producto y su implementación concreta:
+	public interface Product {
+	    public void operacion();
+	}
+
+	public class ConcreteProduct implements Product {
+	    public void operacion(){
+	        System.out.println("Una operación de este producto");
+	    }
+	}
+
+	//Ejemplo de uso:
+	public static void main(String args[]) {
+	    Creator aCreator;
+	    aCreator = new ConcreteCreator();
+	    Product producto = aCreator.factoryMethod();
+	    producto.operacion();
+	}
+
+
+Explicación del código:
+	1. El Producto declara la interfaz, que es común a todos los objetos que puede producir la clase creadora y sus subclases.
+	2. Los Productos Concretos son distintas implementaciones de la interfaz de producto.
+	3. La clase Creadora declara el método fábrica que devuelve nuevos objetos de producto. Es importante que el tipo de retorno de este método coincida con la interfaz de producto.
+	4. Los Creadores Concretos sobrescriben el Factory Method base, de modo que devuelva un tipo diferente de producto. Observa que el método fábrica no tiene que crear nuevas instancias todo el tiempo. También puede devolver objetos existentes de una memoria caché, una agrupación de objetos, u otra fuente.
+
+Observación:
+	Observa que, a pesar de su nombre, la creación de producto no es la principal responsabilidad de la clase creadora. Normalmente, esta clase cuenta con alguna lógica de negocios central relacionada con los productos. 	
+
+Limitaciones:
+	 las subclases sólo pueden devolver productos de distintos tipos si dichos productos tienen una clase base o interfaz común. Además, el método fábrica en la clase base debe tener su tipo de retorno declarado como dicha interfaz.
