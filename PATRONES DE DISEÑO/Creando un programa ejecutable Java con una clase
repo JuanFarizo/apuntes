@@ -1,0 +1,13 @@
+Creando un programa ejecutable Java con una clase main:
+	JVM es un ejecutable, le pasamos FQCN de un archivo java.class como argumento, y cuando la JVM corre, carga la clases dada y busca por un método específico en dicha clase. Si lo encuentra le pasa el control a ese método y éste método se convierte en responsable de ahora en más.
+
+
+	El método que la JVM busca es llamado el "método main" y tiene una firma específica:
+		su nombre debe ser main
+		recibe un parámetro del tipo String array
+		retorna void
+		debe ser public
+		y debe ser static
+		puede o no lanzar una excepción
+
+

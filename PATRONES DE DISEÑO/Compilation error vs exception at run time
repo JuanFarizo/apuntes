@@ -1,0 +1,8 @@
+Compilation	error VS exception at run time
+	- Es trabajo del compilador chequear si el código respeta las reglas de sintaxis del lenguje. Ej. java requiere que la declaración de los paquetes este en la primer línea del archivo de código, sino arrojará error.
+
+	- A pesar de que el código este sintácticamente correcto, el compilador debe asegurarse que el código es logicamente correcto también. Pero éste está limitado al hecho que no puede ejecutar ningún código.
+
+	- La JVM es último guardia que existe para mantener la integridad y el tipificado seguro. A diferencia del compilador, la JVM sabe todo lo que el código está intentando hacer y lanza una excepción tan pronto como determina que la acción dañará la integridad o el tipo de seguridad de la JVM. Por lo tanto cualquier potencial actividad ilegal que escape al compilador será atrapada por la JVM y será una excepción lanzada en tipo de ejecución.
+
+	

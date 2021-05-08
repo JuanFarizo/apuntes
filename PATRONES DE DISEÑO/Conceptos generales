@@ -1,0 +1,57 @@
+Declaración vs definición:
+	Declaración: Significa que algo existe.
+	Definición: Describe exactamente que es.
+
+
+public	void	m1()//method	declaration
+//method	definition	starts
+{
+}
+//method	definition	ends
+
+en cuanto a variables (definida - inicializada)
+int a; definida
+a = 10; inicializada -> es darle una valor.
+
+
+Una interface puede ser vista como el manual del usuario. En ella detallamos los detalles de como interactuar con dicho componente.
+
+En una aplicación la usabilidad de clases, métodos, campos, enums, etc., del componente de softwar esta en su interface. Como programador de la aplicación si queremos usar un componente solo debemos prestar atención a la interfaz de dicho componente. No nos interesa ver lo que contiene o cómo funciona. 
+Por eso decimos API (Application Programming Interface). Es importante en pensar en el desarrollo de componentes (hablando como programadores) y no de programas.
+
+En el mundo Java una colleción de clases proporcionadas por un proveedor para un propósito en particular es llamada "LIBRERIA" y su documentación describe el funcionamiento de su API. 
+Al instalar un JRE (Java Runtime Environment) incluye muchas clases y paquetes, llamados colectivamente librerias estandar de java y la colección de clases e interfaces son llamadas Java API.
+
+
+Type, class, enum e interfaces:
+	Type: es un nombre dado a un comportamiento. Las class, enum e interfaces ayuden a definir ciertos tipos de comportamientos, y estas son tipos de tipos.
+
+	Class: ayuda a combinar la descripción del comportamiento y la implementación que es usada para llevar a cabo dicho comportamiento. La implementación incluye lógica y data.
+
+	Enum: enumerado, también permite combinar descripción de comportamiento e implementación para realizar este comportamiento. En adicional, provee un número fijo de instancias de este tipo y restringe al programador de crear cualquier nueva instancia de su tipo.
+
+	Interface: Permite definir cierto comportamiento sin llevar a cabo la implementación. En cierto sentido una interface es siempre abstracta. No puede existir por si misma, necesita una class que implemente el comportamiento que en ella se describe. 
+
+	Clase Abstracta: Es algo entre una classe y una interfaz. Es una clase en el sentido que define comportamiento como implementación, pero la implementación que provee no es tan completa como para crear una instancia. En ese sentido se parece a una interfaz que no puede existir por su cuenta.
+
+
+Un componente software bien desarrollado es tan genérico como sea posibile. Esta hecho de manera que haga una cosa y permita que otros componentes hacer uso de el sin ser dependientes de el.
+Dependencia significa que deberias ser fácil reemplazar este componente con otro componente que haga la misma cosa.
+
+
+Un método sobrescrito no puede lanzar una excepción más genérica que la que está en la declaración del método al que sobrescribe.
+Por otro lado una subclase no puede lanzar una excepción más específica que aquella que es lanzada por el constructor de la superclase.
+
+Términos utilizados comunmente:
+	- Class: incluye clases, interfaces y enum.
+	- Type: refiere a clases, interfaces, enums y también a los tipos primitivos (byte, char, short, int, long, float, double, and boolean).
+	- Primitive types: byte, char, short, int, long, float, double, and boolean son llamados primitivos porque solo contienen data y no comportamiento (no tienen propiedades ni estado), simplemente accedes a ellos y no lo haces a través de referencias.
+	- References Type: las clases, interfaces, y enum son llamados de tipo referencia porque nunca accedes a ellos directamente, sino a través de referencias.
+	- Top-level reference Types: son clases, interfaces, o enum que estan definidos directamente bajo un paquete son denominados clases, interfaces o enum de nivel superior.
+	- Anonymouse classes: es un caso especial de clases anidads donde la definición de la clase está presente en el código y la declaración completa es inferido automáticamente por el compilador a través del contexto.
+
+Al ejecutar código Java hay dos pasos:
+	El primero en el que el código compila para crear los archivos .class  y el segundo es ejecutado por la JVM y se le pasa el archivo .class como argumento. Todo lo que ocurre durante el tiempo de compilación como la falta de una llave dira "during compile time", todo lo que ocurre duranete la ejecución del programa dirá "during the run time".
+
+	- En ciertos casos es posible para el compilador decifrar el valor de una variable. Si el compilador puede determinar el valor de una variable durante el tiempo de ejcución => entonces la variable es en tiempo de compilación una constante.
+

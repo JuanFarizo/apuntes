@@ -1,0 +1,16 @@
+Compilación y ejecución
+
+Un archivo fuente en java es compilado en un archivo .class y eso es ejecutado por la JVM.
+Podemos organizar nuestras clases en paquetes poniendo un package statement on top de el archivo fuente de java.
+El nombre del paquete junto con el nombre de la clase es llamado FQCN Fully Qualified Class Name
+
+Ej :
+	package	accounting;
+	public	class	Account{
+				private	String	accountNumber;
+				public	static	void	main(String[]	args){
+							System.out.println("Hello	1	2	3	testing...");
+				}
+	}
+
+accounting.Account is the fully qualified class name of the	class.

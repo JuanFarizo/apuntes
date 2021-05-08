@@ -1,0 +1,32 @@
+Objetos y referencias:
+	Una clase es una plantilla con la que se crean los objetos. Un objeto es una instancia de la clase. La clase define que va a contener el objeto una vez que sea creado.
+
+Si la variable es non-reference (variable primitiva) Java usa directamente el valor que tiene almacenado.
+
+Si la variable es reference (variable referenciada) esta contiene el lugar en memoria donde se almacena el valor.
+
+Si una variable no esta apuntando a ninguna referencia de objeto esa variable entonces es null. 
+
+
+Static and Instance:
+	Static: significa que pertenece a una clase en vez de pertenecer a una instancia de esa clase.
+
+Stack & Heap:
+	Stack space: es el espacio utilizado para almacenar cosas temporarias, como el i en un for.
+	Heap space: el resto de las otras cosas son almacenadas en el heap.
+
+En Java a cada thread se le asigna una cantidad fija de stack space. Al invocar un método todas las variables temporarias son almacenadas en este stack (que originalmente esta vacio). Al terminar el for el espacio que i ocupaba vuelve a la pila, vaciandola un poco (son removidas del top del stack). 
+Cuando un thread finaliza su stack space es devuelto a la JVM.
+
+El heap space, los objetos yacen en el heap, es importante para el análisis de la performance del programa su organización. Cuando utilizamos la palabra clave new y cremaos un objeto lo estamos poniendo en el heap.
+
+Mientras que al crear variables, sean de referencias o primitivaas estamos poniendolos en la pila (stack space).
+
+Variables locales: son siempre puestas en el stack. Objetos son siempres almacenados en el heap. 
+JVM tiene muchos threads, c/u tiene un espacio fijo de memoria llamado stack space dedicado únicamente a dicho thread. (Stack Semantics)
+
+El espacio heap es compartido por todos los threads. Cualquiera de ellos puede usar el espacio en heap creando objetos. Como este espacio es compartido los threads pueden acceder a objetos creados por otros threads si tienen la referencia a ese objeto. (Heap Semantics)
+
+El stack space es limitado si tenemos muchos métodos llamandose y creando variables locales (por ejem recursion) es posible quedarnos sin espacio. Por defecto es 64KB pero puede cambiarse usando la linea de commano option -Xss.
+
+Las variables locales y automáticas son aquellas que se lamacenan en el stack space.
