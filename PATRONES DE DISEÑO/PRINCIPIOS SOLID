@@ -1,0 +1,120 @@
+PRINCIPIOS SOLID: No hay que llevarlos al extremo. Entre menos cambie una clase menos nos tenemos que preocupar por aplicarlos, ya que estos principios tienen sus ventajas y desventajas.
+
+1. SINGLE RESPONSABILITY PRINCIPLE:
+Establece que una clase debe tener una unica responsabilidad. Una buena práctica es listar la responsabilidad de la clase en la doc. Es un recordatorio de que se debe mantener la responsabilidad al mínimo.
+
+class EmptyGarden
+{
+	private $width;
+	private $height;
+	public function __construct($width, $height)
+	{
+		$this->width = $width;
+		$this->height = $height;
+	}
+	public function items()
+	{
+		$numberOfSpots = ceil($this->width * $this->height);
+		return array_fill(0, $numberOfSpots, 'handful of dirt');
+	}
+}
+
+2. OPEN/CLOSE PRINCIPLE:
+Establece que las clases deben estar abiertas para extensión y cerradas a modificación. Esto se puede alcanzar haciendo uso de la herencia (extender de una clase) o de la composición (implementar una interfaz).
+
+app/Marijuana
+class MarijuanaGarden extends EmptyGarden
+{
+	public function items()
+	{
+		return array_fill(0, $this->width * $this->height, 'weed');
+	}
+}
+
+3. LISKOV SUBTITUTION PRINCIPLE:
+Objetos de un determinado tipo deberían poder ser reemplazados por instancias de su subtipo sin alterar el correcto funcionamiento del programa.
+Devuelve el mismo tipo en un @Override método de una sublacse que el tipo que devuelve el método en la clase padre. Lo mismo aplica para los parámetros de los métodos. Sé consistente.
+
+app/PlotArea.php
+namespace App;
+interface PlotArea
+{
+	public function totalNumberOfPlots();
+}
+
+app/EmptyGarden.php
+public function __construct(PlotArea $plot)
+{
+	$this->plot = $plot;
+}
+public function items()
+{
+	$numberOfPlots = $this->plot->totalNumberOfPlots();
+	return array_fill(0, $numberOfPlots, 'handful of dirt');
+}
+
+app/RectangleArea.php
+namespace App;
+use App\PlotArea;
+class RectangleArea implements PlotArea
+{
+private $width;
+private $height;
+public function __construct($width, $height)
+{
+	$this->width = $width;
+	$this->height = $height;
+}
+public function totalNumberOfPlots()
+{
+	return ceil($this->width * $this->height / 2);
+}
+}
+
+$garden = new App\EmptyGarden(new App\RectangleArea(10, 10))
+$garden->items();
+
+4. INTERFACE SEGREGATION PRINCIPLE:
+Cuanta más funcionaidad ponemos en una clase más dificultad puede causar el manejo de dicha clase. Encapsular comportamiento es una parte poderosa del diseño orientado a objetos. 
+Podriamos hacer de garden una colección de subinterfaces.
+Si una interfaz tiene más de 5 métodos es que estamos haciendo demasiado en esa interfaz.
+
+src/GardenInterface.php
+interface GardenInterface implements GrowableInterface, WeedableInterface, ...
+{
+}
+
+Tener una interfaz maestra hecha de interfaces más pequeñas otorga más flexibilidad porque permite tomar y seleccionar de pequeñas interfaces, pero no es una solución si Garden crece y se vuelve más complejo.
+
+El principio recomienda mantener las interfaces pequeñas: "muchas interfaces específicas del cliente son mejores que una interfaz de propósito general"
+
+5. DEPENDENCY INVERSION PRINCIPLE:
+
+Establece que uno debe depender de abstracción antes que en concreción.
+app/Garden.php
+public function __construct(RectangleArea $plot)
+{
+	$this->plot = $plot;
+}
+Esto nos fuerza a utilizar un área rectangular para cada garden, dando como resultado algo inflexible. Para evitar el problema de ser inflexible la solución es utilizar abstracción (una interfaz PlotArea interface) en vez de concreción (RectangleArea class). Este aspecto de inversión de dependencia es conocido como inyección de dependencia y se logra INYECTANDO clases que implementan una interfaz específica.
+Otra forma segura de detectar las violaciones de la inversión de dependencia es cuando comienza a ver la palabra clave new en el código.
+Utilizar la palabra new esta bien, pero crea un tipo de dependencia dura, y se dicen que ambas clases estan acompladas (la clase en donde utilizo la palabra new y la clase a la que pertenece el objeto que estoy creando) y esto puede tornarse resquebradiza. Esto es más dificil de testear y mantener.
+
+DICHO: POCO ACOPLAMIENTO, ALTA COHESIÓN
+Acoplamiento: Grado en el que una clase se basa en otra clase.
+Cohesión: Grado en que los elementos de una clase pertenecen juntos.
+
+Para mitigar problemas de acomple y cohesión, hay que seguir la práctica que las claes de alto nivel no deben depender de lasa claes de bajo nivel, ni viceversa. En su lugar, dependa de abstracciones como una interfaz, una clase abstracta, etc.
+¿Cómo distinguimos una clase de alto nivel de una clase de bajo nivel?
+Clase de alto nivel: un maestro que conduce un concierto. Orquesta el nivel más bajo.
+Clas de bajo nivel: las personas que tocan el instrumento.
+
+EJEMPLO:
+Sin embargo, imagina que el maestro dependía de una concreción: Bob, el tuba. Si Bob está enfermo de gripe, el maestro debe cerrar el concierto. ¿Y si en lugar de depender de Bob, él depende de la abstracción: tuba?
+
+Inversión de dependencia != inyección de dependencia.
+
+Otra forma de implementar inversión de dependencia es usando un container de inversión de control.
+
+Encapsula lo que varia:
+Solo aplica abstracción a las cosas que varian en la aplicación.

@@ -66,3 +66,6 @@ Observación:
 
 Limitaciones:
 	 las subclases sólo pueden devolver productos de distintos tipos si dichos productos tienen una clase base o interfaz común. Además, el método fábrica en la clase base debe tener su tipo de retorno declarado como dicha interfaz.
+
+
+IMPLEMENTACIÓN (En PHP/LARAVEL):
