@@ -1,2 +1,27 @@
-03_Abstract_Factory
+03_Abstract_Factory:
+Se encarga de la instanciación de objetos relacionados sin el uso de subclases.
+
+Intención: Proveer una interfaz para la creación de familias 
+de objetos relacionados o dependientes sin especificar su clase concreta.
+Se refina en fábricas concretas que producen != objetos con != combinaciones.
+Permite que el cliente sea independiente de como los productos son creados e implementados.
+
+Cundo se usa:
+	- Cuando el sistema puede usar una o varias familias de productos.
+	- Cuando se busca independencia de como los productos son creados.
+	- El sistema necesita que el producto forzosamente sea creado como familias de productos.
+
+La diferencia con el Factory Method, es que construye multiples objetos.
+
+
+Client: es quien usa abstract factory. The concrete factory se puede pasar como argumento al constructor del cliente o el cliente puede resoler que concrete factory usar sin inyección de dependencia.
+
+AbstractFactory: puede ser una intefaz o una clase abstracta que es implmentada por una ConcreteFactory.
+
+ConcreteFactory hereda de AbstractFactory y genera los productos del tipo concreto de familia.
+
+Product: Son clases abstractas o interfaces que implementaran productos concretos.
+
+Product: Estas clases pertenecen juntas en familia
+
 IMPLEMENTACIÓN (En PHP/LARAVEL):

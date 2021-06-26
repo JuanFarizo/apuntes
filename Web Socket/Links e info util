@@ -1,0 +1,45 @@
+Links e info útil:
+	https://www.natapuntes.es/websockets-con-php-javascript/
+
+ 
+
+WebSocket -> Permite crear una arquitectura orientada a eventos como publish/suscribe.
+
+ 
+
+Hay una biblioteca llamada PHP-Websockets https://github.com/ghedipunk/PHP-Websockets
+
+ 
+
+Ver más en profundidad $_COOKIES Y $_SESION
+
+ 
+
+Handshake:
+
+"GET / HTTP/1.1\r\n" .
+
+"Upgrade: websocket\r\n" .
+
+"Connection: Upgrade\r\n" .
+
+"Host: "./*HOST DESTINO*/."\r\n" .
+
+"Origin: "./*HOST ORIGEN*/."\r\n" .
+
+"Sec-WebSocket-Key: "./*ID ÚNICO EN B64*/."\r\n" .
+
+"Sec-WebSocket-Version: 13\r\n\n";
+
+ 
+
+Para poder utilizarlos hay que tener habiltiado la extensión extensión=php_sockets.dll y config. El firewall para tener abierto el puerto del socket maestro.
+
+ 
+
+Armar sala de chat con webSockets
+
+https://www.minestron.it/blog/implementacion-de-websocket-y-socket-de-php-para-desarrollar-una-sala-chat
+
+ 
+ https://stackoverflow.com/questions/14512182/how-to-create-websockets-server-in-php
