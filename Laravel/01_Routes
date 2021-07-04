@@ -1,0 +1,35 @@
+Rutas: Se encuentran dentro de la carpeta routes/web.php
+
+Tenemos las que son para la web y otras que son para las api.
+
+
+
+Tipo de rutas:
+	GET
+	POST
+	PUT
+	DELETE
+	PATCH
+	OPTIONES
+
+<?php  
+
+Retorna simplemente una vista:
+
+Route::get('/contact', function (){
+    return view('contact');
+});
+
+
+Utilizar un controlador:
+ContactController y llamamos al método index
+
+Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'index'], function (){
+    return view('contact');
+});
+
+O dejamos toda la lógica en el controlador:
+
+Route::get('/contact', [ContactController::class, 'index']);
+
+?>

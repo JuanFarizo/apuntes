@@ -1,0 +1,39 @@
+Middleware
+
+php artisan make:middleware nombreMiddleware
+
+
+Debemos registrar el middleware en Kernel.php
+
+<php 
+
+
+protected $routeMiddleware = [
+        'auth' => \App\Http\Middleware\Authenticate::class,
+        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
+        'can' => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
+        'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'ageCheck' => \App\Http\Middleware\checkAge::class, //Este es el que registramos.
+    ];
+
+
+  //ageCheck es el nombre con el que nos va a llegar al va variable de la clase
+  //$request->ageCheck  
+?>
+
+Para usarlo en el web.php
+
+
+<?php
+
+Route::get('/home', function () {
+    return view('welcome');
+})->middleware('ageCheck');
+
+
+?>
