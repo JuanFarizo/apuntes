@@ -1,0 +1,24 @@
+Apunte Java de Estructura de Datos:
+
+Estructura de Datos en Base a Punteros:
+	1. Lista Enlazada Simple
+	2. Cola
+ 	3. Pila
+
+
+Lista Enlazada Simple:
+	Permite manejar los datos de forma dinamica. Un arreglo asigna memoria para todos sus elementos ordenados como un solo bloque. La lista Enlazada asigna epsacio para cada elemento por separado, en su propio bloque de memoria, llamado NODO. La lista conecta nodos usando punteros, formando una estructura parecida a la de una cadena.
+
+NODO: Es un Objeto. Tiene dos atributos -> Contenido: usado para almacenar un objeto.
+										-> Siguiente: usado para hacer referencia al siguiente nodo de la lista.
+
+Class Nodo {
+	- Nodo siguiente;
+	- Object contenido;
+}
+
+
+La ListaEnlazada es reprensetada por un puntero al primer nodo.
+class ListaEnlazada {
+	- Nodo primero;
+}
