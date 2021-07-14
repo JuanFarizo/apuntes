@@ -5,8 +5,9 @@ Estructura de Datos en Base a Punteros:
 	2. Cola
  	3. Pila
 
-
+=======================
 Lista Enlazada Simple:
+=======================
 	Permite manejar los datos de forma dinamica. Un arreglo asigna memoria para todos sus elementos ordenados como un solo bloque. La lista Enlazada asigna epsacio para cada elemento por separado, en su propio bloque de memoria, llamado NODO. La lista conecta nodos usando punteros, formando una estructura parecida a la de una cadena.
 
 NODO: Es un Objeto. Tiene dos atributos -> Contenido: usado para almacenar un objeto.
@@ -22,3 +23,173 @@ La ListaEnlazada es reprensetada por un puntero al primer nodo.
 class ListaEnlazada {
 	- Nodo primero;
 }
+
+/: siguiente es null
+
+Lista Enlazada -> (Nodo Primero) 52 -> 41 -> 2 -> 123 /
+
+Cada nodo apunta al siguiente salvo el ultimo que cuyo caso siguiente es null.
+
+
+Si quisieramos utilizar el 3er nodo de la lista enlazada deberiamos:
+1 Crear un puntero al primero de la lista
+2 Avanzar con el puntero hasta el tercer nodo
+3 Utilizar el contenido del nodo
+
+Metodos sugeridos para Lista Enlazada:
+estaVacia()
+vaciar()
+largo()
+tieneUnElementoDeterminado(identificadorElemento)
+tieneMasElementos(puntero)
+añadir(nuevoObjeto)
+buscar(identificadorElemento)
+remover(identificadorElemento)
+
+Métodos principales: añadir(), buscar() y remover().
+
+Metodo Añadir():
+Para añadir un nodo a la lista, primero creamos un nodo, al que llamaremos nuevoNodo, con el objeto. Luego conectamos a nuevoNodo con el último nodo de la lista.
+Cdo el puntero apunta al último nodo de la lista, y, además, ahora puntero.siguiente
+tiene un valor igual a null, haremos que puntero.siguiente tome el valor nuevoNodo, es
+decir, puntero.siguiente = nuevoNodo.
+
+Método buscar():
+Lo buscamos por medio de su atributo unico/id 
+
+while(puntero != null) {
+	if(puntero.contenido.id.compareTo(id) == 0) {
+	return puntero.contenido
+	}
+
+	puntero = puntero.siguiente
+}
+
+Método remover():
+Para eliminar un nodo de la lista, primero debemos ubicar el nodo anterior éste, es decir,puntero.siguiente será el nodo a eliminar. Ahora, simplemente dejamos sin puntero al nodo diciendo: puntero.siguiente = puntero.siguiente.siguiente. De esta forma nadie estara apuntando a dicho nodo y el garbage collector se lo llevara.
+
+
+
+
+
+=======================
+Pila/Stack:
+=======================
+Se basa en el concepto LIFO: Last In First Out, siempre el ultimo elemento que entra es el primero que sale. Se difiere a la lista enlazada en la forma que gestionamos los elementos almacenados.
+
+Por un lado tenemos un metodo que agrega un nodo al principio de la pila y otro que elimine el primer nodo de la pila.
+
+Métodos principales: apilar() y sacar()
+
+Método verPrimero():
+La idea del método verPrimero() es, simplemente, decirnos quién es el objeto que está al principio de la pila, es decir, el último objeto ingresado y, potencialmente, el primero a eliminar. Para tener acceso a este objeto, hacemos uso del atributo primeroDeLaPila, que no es más que un puntero al primer nodo de la pila.
+
+Método sacar():
+El objetivo de este método es eliminar el nodo más externo, es decir, el último ingresado. Para esto, simplemente hacemos que primeroDeLaPila apunte a su sucesor, es decir primeroDeLaPila = primeroDeLaPila.siguiente
+
+primeroDeLaPila -> Pila 3 -> Pila 2 -> Pila 1 (no apunta a ninguna es la primer pila que se ingreso), la pila 3 es la ultima pila ingresada.
+
+Método apilar()
+Este método es el encargado de añadir nodos a la pila. Para esto, es necesario que el nodo sea añadido al principio de la pila.
+
+1. Se crea un nuevo nodo
+2. Se hace que apunte al ultimo nodo que habia en la pila
+3. primeroDeLaPila ahora apunta a esta nodo que agregamos y es el nuevoNodo.
+
+
+=======================
+Cola/Queue:
+=======================
+Es una estructura que se basa en el concepto FIFO: First  In First Out. El primero elemento que entra es el primero que sale.
+Su implementacion es parecida a la de la lista enlazada.
+
+Métodos principales: enfilar() y sacar():
+
+Método enfilar()
+Este método tiene como objetivo poner en la fila al objeto entregado en el argumento, al que llamaremos nuevoObjeto. Para hacer esto, se debe agregar a la cola un nodo, al que llamaremos nuevoNodo, que contenga a nuevoObjeto. Es decir  eltimoEnLaCola.siguiente debe apuntar a nuevoNodo, y luego ultimoEnLaCola debe apuntar a nuevoNodo.
+
+
+Primero en la cola -> 1 Llegada -> 2 Llegada -> 3 Llegada / no apunta a nadie. Es el ultimo en la cola
+
+El primeroEnLaCola sigue siendo el mismo pero el ultimoEnLaCola ahora apunta al nuevoNodo.
+
+Método sacar()
+Este método es el encargado de “atender” al primero de la fila, es decir, de eliminarlo de la cola y retornarlo. Para ésto, simplemente basta hacer que primeroEnLaCola apunte a su sucesor, o sea, primeroEnLaCola = primeroEnLaCola.siguiente.
+
+
+el primeroEnLaCola ahora apunta al 2 Llegada
+
+Primero en la cola -> 2 Llegada -> 3 Llegada / no apunta a nadie.
+
+el ultimoEnLaCola sigue apuntando al mismo nodo (3 Llegada)
+
+
+
+==========================
+Arbol Binario/ Binary Tree
+==========================
+Sirve para representar estructuras de información jerárquicas y direcciones o etiquetas.
+Aplicaciones:
+o organizar tablas de símbolos en compiladores
+o representar tablas de decisión
+o asignar bloques de memoria de tamaño variable
+o ordenar
+o buscar
+o solucionar juegos
+o probar teoremas
+
+
+Un árbol es un conjunto finito T de uno o más nodos tal que:
+a) Existe un nodo especial llamado la raíz del árbol
+b) Los nodos restantes están particionados en m > 0 conjuntos disjuntos T1,...,Tm y
+cada uno de estos conjuntos es a su vez un árbol. Los árboles T1,...,Tm son
+llamados subárboles de la raíz
+
+
+Cualquier nodo es la raíz de un subárbol que consiste de él y los nodos debajo de él. Esto se deriva de la definición recursiva de árbol presentada
+
+Formas de representar un arbol:
+ Conjuntos anidados
+ Parentisis anidados
+ Identacion
+ Grafos (la forma mas comun, con la raiz hacia arriba)
+
+ 				*
+ 		*				*
+ 	 *	   *	 	 *	    *
+   *  *   *   *    *   *   *   *
+
+
+Un arco es una conexión entre dos vértices.
+Un camino en un árbol es una lista de vértices diferentes en los que vértices sucesivos están conectados por arcos en el árbol. Una propiedad que define a los árboles es que existe exactamente un camino entre la raíz y cada uno de los otros nodos en el árbol.
+Cada nodo, excepto la raíz, tiene exactamente un nodo arriba de él, que es llamado su padre; los nodos que están exactamente abajo de él son llamados sus hijos.
+
+El número de hijos que cuelgan de un nodo es llamado el grado del nodo. El grado de un
+árbol es el grado máximo de los nodos del árbol. Un nodo de grado cero es llamado hoja, es decir, no tiene hijos.
+
+Los nodos de un árbol pueden dividirse en niveles; el nivel de un nodo es el número de
+nodos en el camino de él a la raíz. La altura de un árbol es el nivel máximo de todos los nodos en el árbol, es decir, la distancia máxima de la raíz a cualquier nodo.
+
+
+En muchas ocasiones los árboles se estudian por su grado. En este caso, estudiaremos los árboles de grado 2, es decir, los árboles binarios.
+
+Arbol Binario:
+Son usados para representar ciertos tipos de expresiones algebraicas, algoritmos, búsquedas y ordenamientos.
+
+Formas de recorrer un arbol:
+	1. Pre-Orden
+	2. In-Orden
+	3. Post-Orden
+
+1. Para recorrer un árbol binario no vacío T en pre-orden o previo:
+	1. visitar la raíz
+	2. recorrer recursivamente el subárbol izquierdo
+	3. recorrer recursivamente el subárbol derecho
+2. Para recorrer un árbol binario no vacío T en in-orden o simétrico:
+	1. recorrer recursivamente el subárbol izquierdo
+	2. visitar la raíz
+	3. recorrer recursivamente el subárbol derecho
+3. Para recorrer un árbol binario no vacío T en post-orden o posterior:
+	1. recorrer recursivamente el subárbol izquierdo
+	2. recorrer recursivamente el subárbol derecho
+	3. visitar la raíz
